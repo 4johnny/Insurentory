@@ -16,6 +16,8 @@
 		B22685C21A88463400AAC8A6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B22685C11A88463400AAC8A6 /* Images.xcassets */; };
 		B22685C51A88463400AAC8A6 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B22685C31A88463400AAC8A6 /* LaunchScreen.xib */; };
 		B22685D11A88463400AAC8A6 /* InsurentoryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B22685D01A88463400AAC8A6 /* InsurentoryTests.m */; };
+		E0DDB9AB1A8951550044AF4D /* Asset.m in Sources */ = {isa = PBXBuildFile; fileRef = E0DDB9AA1A8951550044AF4D /* Asset.m */; };
+		E0DDB9AE1A89518F0044AF4D /* Insurentory.m in Sources */ = {isa = PBXBuildFile; fileRef = E0DDB9AD1A89518F0044AF4D /* Insurentory.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +47,10 @@
 		B22685CA1A88463400AAC8A6 /* InsurentoryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InsurentoryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B22685CF1A88463400AAC8A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B22685D01A88463400AAC8A6 /* InsurentoryTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InsurentoryTests.m; sourceTree = "<group>"; };
+		E0DDB9A91A8951550044AF4D /* Asset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Asset.h; sourceTree = "<group>"; };
+		E0DDB9AA1A8951550044AF4D /* Asset.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Asset.m; sourceTree = "<group>"; };
+		E0DDB9AC1A89518F0044AF4D /* Insurentory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Insurentory.h; sourceTree = "<group>"; };
+		E0DDB9AD1A89518F0044AF4D /* Insurentory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Insurentory.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +102,10 @@
 				B22685C11A88463400AAC8A6 /* Images.xcassets */,
 				B22685C31A88463400AAC8A6 /* LaunchScreen.xib */,
 				B22685B51A88463400AAC8A6 /* Insurentory.xcdatamodeld */,
+				E0DDB9AC1A89518F0044AF4D /* Insurentory.h */,
+				E0DDB9AD1A89518F0044AF4D /* Insurentory.m */,
+				E0DDB9A91A8951550044AF4D /* Asset.h */,
+				E0DDB9AA1A8951550044AF4D /* Asset.m */,
 				B22685AE1A88463400AAC8A6 /* Supporting Files */,
 			);
 			path = Insurentory;
@@ -228,9 +238,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				B22685BD1A88463400AAC8A6 /* DetailViewController.m in Sources */,
+				E0DDB9AB1A8951550044AF4D /* Asset.m in Sources */,
 				B22685BA1A88463400AAC8A6 /* MasterViewController.m in Sources */,
 				B22685B71A88463400AAC8A6 /* Insurentory.xcdatamodeld in Sources */,
 				B22685B41A88463400AAC8A6 /* AppDelegate.m in Sources */,
+				E0DDB9AE1A89518F0044AF4D /* Insurentory.m in Sources */,
 				B22685B11A88463400AAC8A6 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -424,6 +436,7 @@
 				B22685D61A88463400AAC8A6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B22685D71A88463400AAC8A6 /* Build configuration list for PBXNativeTarget "InsurentoryTests" */ = {
 			isa = XCConfigurationList;
@@ -432,6 +445,7 @@
 				B22685D91A88463400AAC8A6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
