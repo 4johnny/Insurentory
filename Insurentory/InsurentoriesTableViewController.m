@@ -6,15 +6,15 @@
 //  Copyright (c) 2015 Empath Solutions. All rights reserved.
 //
 
-#import "MasterViewController.h"
-#import "DetailViewController.h"
+#import "InsurentoriesTableViewController.h"
+#import "InsurentoryViewController.h"
 #import "Insurentory.h"
 
-@interface MasterViewController ()
+@interface InsurentoriesTableViewController ()
 
 @end
 
-@implementation MasterViewController
+@implementation InsurentoriesTableViewController
 
 - (void)awakeFromNib {
 	[super awakeFromNib];
@@ -31,7 +31,7 @@
 
 	UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
 	self.navigationItem.rightBarButtonItem = addButton;
-	self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
+	self.detailViewController = (InsurentoryViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -42,17 +42,11 @@
 - (void)insertNewObject:(id)sender {
 	NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
 	NSEntityDescription *entity = [[self.fetchedResultsController fetchRequest] entity];
-	NSManagedObject *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:[entity name] inManagedObjectContext:context];
-	    
-	// If appropriate, configure the new managed object.
-	// Normally you should use accessor methods, but using KVC here avoids the need to add a custom class to the template.
+    Insurentory *newInsurentory = [NSEntityDescription insertNewObjectForEntityForName:[entity name] inManagedObjectContext:context];
     
-    
-
-    [newManagedObject setValue:[NSDate date] forKey:@"timeStamp"];
-    [newManagedObject setValue:@"Home 2015" forKey:@"name"];
-    
-    NSLog(@"Created new Inventory entity: %@", newManagedObject.description);
+    newInsurentory.name = @"Home 2015";
+    newInsurentory.timeStamp = [NSDate date];
+    NSLog(@"Created new Inventory entity: %@", newInsurentory);
     
 	    
 	// Save the context.
@@ -70,9 +64,9 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 	if ([[segue identifier] isEqualToString:@"showDetail"]) {
 	    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-	    NSManagedObject *object = [[self fetchedResultsController] objectAtIndexPath:indexPath];
-	    DetailViewController *controller = (DetailViewController *)[[segue destinationViewController] topViewController];
-	    [controller setDetailItem:object];
+	    Insurentory *currentInsurentory = [[self fetchedResultsController] objectAtIndexPath:indexPath];
+	    InsurentoryViewController *controller = (InsurentoryViewController *)[[segue destinationViewController] topViewController];
+	    controller.detailItem = currentInsurentory;
 	    controller.navigationItem.leftBarButtonItem = self.splitViewController.displayModeButtonItem;
 	    controller.navigationItem.leftItemsSupplementBackButton = YES;
 	}
@@ -95,6 +89,17 @@
 	return cell;
 }
 
+
+- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+    Insurentory *insurentory = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    cell.textLabel.text = insurentory.name;
+    
+    NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
+    cell.detailTextLabel.text = [dateFormatter stringFromDate:insurentory.timeStamp];
+}
+
+
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
 	// Return NO if you do not want the specified item to be editable.
 	return YES;
@@ -115,11 +120,6 @@
 	}
 }
 
-- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
-	NSManagedObject *object = [self.fetchedResultsController objectAtIndexPath:indexPath];
-	cell.textLabel.text = [[object valueForKey:@"name"] description];
-    cell.detailTextLabel.text = [[object valueForKey:@"timeStamp"] description];
-}
 
 #pragma mark - Fetched results controller
 

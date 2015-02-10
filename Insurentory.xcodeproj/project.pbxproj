@@ -10,14 +10,18 @@
 		B22685B11A88463400AAC8A6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B22685B01A88463400AAC8A6 /* main.m */; };
 		B22685B41A88463400AAC8A6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B22685B31A88463400AAC8A6 /* AppDelegate.m */; };
 		B22685B71A88463400AAC8A6 /* Insurentory.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B22685B51A88463400AAC8A6 /* Insurentory.xcdatamodeld */; };
-		B22685BA1A88463400AAC8A6 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B22685B91A88463400AAC8A6 /* MasterViewController.m */; };
-		B22685BD1A88463400AAC8A6 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B22685BC1A88463400AAC8A6 /* DetailViewController.m */; };
-		B22685C01A88463400AAC8A6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B22685BE1A88463400AAC8A6 /* Main.storyboard */; };
+		B22685BA1A88463400AAC8A6 /* InsurentoriesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B22685B91A88463400AAC8A6 /* InsurentoriesTableViewController.m */; };
+		B22685BD1A88463400AAC8A6 /* InsurentoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B22685BC1A88463400AAC8A6 /* InsurentoryViewController.m */; };
+		B22685C01A88463400AAC8A6 /* Insurentories.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B22685BE1A88463400AAC8A6 /* Insurentories.storyboard */; };
 		B22685C21A88463400AAC8A6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B22685C11A88463400AAC8A6 /* Images.xcassets */; };
 		B22685C51A88463400AAC8A6 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B22685C31A88463400AAC8A6 /* LaunchScreen.xib */; };
 		B22685D11A88463400AAC8A6 /* InsurentoryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B22685D01A88463400AAC8A6 /* InsurentoryTests.m */; };
 		E0DDB9AB1A8951550044AF4D /* Asset.m in Sources */ = {isa = PBXBuildFile; fileRef = E0DDB9AA1A8951550044AF4D /* Asset.m */; };
 		E0DDB9AE1A89518F0044AF4D /* Insurentory.m in Sources */ = {isa = PBXBuildFile; fileRef = E0DDB9AD1A89518F0044AF4D /* Insurentory.m */; };
+		E0F7B1221A8A96A600CBD7BD /* EHDotLinkedStoryboardSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = E0F7B1211A8A96A600CBD7BD /* EHDotLinkedStoryboardSegue.m */; };
+		E0F7B1241A8A974E00CBD7BD /* Assets.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0F7B1231A8A974E00CBD7BD /* Assets.storyboard */; };
+		E0F7B1271A8A9BA600CBD7BD /* AssetsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E0F7B1261A8A9BA600CBD7BD /* AssetsTableViewController.m */; };
+		E0F7B12A1A8A9BD600CBD7BD /* AssetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E0F7B1291A8A9BD600CBD7BD /* AssetViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,11 +41,11 @@
 		B22685B21A88463400AAC8A6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B22685B31A88463400AAC8A6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		B22685B61A88463400AAC8A6 /* Insurentory.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Insurentory.xcdatamodel; sourceTree = "<group>"; };
-		B22685B81A88463400AAC8A6 /* MasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
-		B22685B91A88463400AAC8A6 /* MasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
-		B22685BB1A88463400AAC8A6 /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
-		B22685BC1A88463400AAC8A6 /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
-		B22685BF1A88463400AAC8A6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B22685B81A88463400AAC8A6 /* InsurentoriesTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InsurentoriesTableViewController.h; sourceTree = "<group>"; };
+		B22685B91A88463400AAC8A6 /* InsurentoriesTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InsurentoriesTableViewController.m; sourceTree = "<group>"; };
+		B22685BB1A88463400AAC8A6 /* InsurentoryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InsurentoryViewController.h; sourceTree = "<group>"; };
+		B22685BC1A88463400AAC8A6 /* InsurentoryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InsurentoryViewController.m; sourceTree = "<group>"; };
+		B22685BF1A88463400AAC8A6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Insurentories.storyboard; sourceTree = "<group>"; };
 		B22685C11A88463400AAC8A6 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		B22685C41A88463400AAC8A6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		B22685CA1A88463400AAC8A6 /* InsurentoryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InsurentoryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -51,6 +55,13 @@
 		E0DDB9AA1A8951550044AF4D /* Asset.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Asset.m; sourceTree = "<group>"; };
 		E0DDB9AC1A89518F0044AF4D /* Insurentory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Insurentory.h; sourceTree = "<group>"; };
 		E0DDB9AD1A89518F0044AF4D /* Insurentory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Insurentory.m; sourceTree = "<group>"; };
+		E0F7B1201A8A96A600CBD7BD /* EHDotLinkedStoryboardSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EHDotLinkedStoryboardSegue.h; sourceTree = "<group>"; };
+		E0F7B1211A8A96A600CBD7BD /* EHDotLinkedStoryboardSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EHDotLinkedStoryboardSegue.m; sourceTree = "<group>"; };
+		E0F7B1231A8A974E00CBD7BD /* Assets.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Assets.storyboard; sourceTree = "<group>"; };
+		E0F7B1251A8A9BA600CBD7BD /* AssetsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssetsTableViewController.h; sourceTree = "<group>"; };
+		E0F7B1261A8A9BA600CBD7BD /* AssetsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssetsTableViewController.m; sourceTree = "<group>"; };
+		E0F7B1281A8A9BD600CBD7BD /* AssetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssetViewController.h; sourceTree = "<group>"; };
+		E0F7B1291A8A9BD600CBD7BD /* AssetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssetViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,18 +105,21 @@
 			children = (
 				B22685B21A88463400AAC8A6 /* AppDelegate.h */,
 				B22685B31A88463400AAC8A6 /* AppDelegate.m */,
-				B22685B81A88463400AAC8A6 /* MasterViewController.h */,
-				B22685B91A88463400AAC8A6 /* MasterViewController.m */,
-				B22685BB1A88463400AAC8A6 /* DetailViewController.h */,
-				B22685BC1A88463400AAC8A6 /* DetailViewController.m */,
-				B22685BE1A88463400AAC8A6 /* Main.storyboard */,
-				B22685C11A88463400AAC8A6 /* Images.xcassets */,
-				B22685C31A88463400AAC8A6 /* LaunchScreen.xib */,
-				B22685B51A88463400AAC8A6 /* Insurentory.xcdatamodeld */,
+				B22685B81A88463400AAC8A6 /* InsurentoriesTableViewController.h */,
+				B22685B91A88463400AAC8A6 /* InsurentoriesTableViewController.m */,
+				B22685BB1A88463400AAC8A6 /* InsurentoryViewController.h */,
+				B22685BC1A88463400AAC8A6 /* InsurentoryViewController.m */,
+				E0F7B1251A8A9BA600CBD7BD /* AssetsTableViewController.h */,
+				E0F7B1261A8A9BA600CBD7BD /* AssetsTableViewController.m */,
 				E0DDB9AC1A89518F0044AF4D /* Insurentory.h */,
 				E0DDB9AD1A89518F0044AF4D /* Insurentory.m */,
+				E0F7B1281A8A9BD600CBD7BD /* AssetViewController.h */,
+				E0F7B1291A8A9BD600CBD7BD /* AssetViewController.m */,
 				E0DDB9A91A8951550044AF4D /* Asset.h */,
 				E0DDB9AA1A8951550044AF4D /* Asset.m */,
+				B22685BE1A88463400AAC8A6 /* Insurentories.storyboard */,
+				E0F7B1231A8A974E00CBD7BD /* Assets.storyboard */,
+				B22685B51A88463400AAC8A6 /* Insurentory.xcdatamodeld */,
 				B22685AE1A88463400AAC8A6 /* Supporting Files */,
 			);
 			path = Insurentory;
@@ -114,6 +128,10 @@
 		B22685AE1A88463400AAC8A6 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				E0F7B1201A8A96A600CBD7BD /* EHDotLinkedStoryboardSegue.h */,
+				E0F7B1211A8A96A600CBD7BD /* EHDotLinkedStoryboardSegue.m */,
+				B22685C31A88463400AAC8A6 /* LaunchScreen.xib */,
+				B22685C11A88463400AAC8A6 /* Images.xcassets */,
 				B22685AF1A88463400AAC8A6 /* Info.plist */,
 				B22685B01A88463400AAC8A6 /* main.m */,
 			);
@@ -217,9 +235,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B22685C01A88463400AAC8A6 /* Main.storyboard in Resources */,
+				B22685C01A88463400AAC8A6 /* Insurentories.storyboard in Resources */,
 				B22685C51A88463400AAC8A6 /* LaunchScreen.xib in Resources */,
 				B22685C21A88463400AAC8A6 /* Images.xcassets in Resources */,
+				E0F7B1241A8A974E00CBD7BD /* Assets.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -237,11 +256,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B22685BD1A88463400AAC8A6 /* DetailViewController.m in Sources */,
+				B22685BD1A88463400AAC8A6 /* InsurentoryViewController.m in Sources */,
 				E0DDB9AB1A8951550044AF4D /* Asset.m in Sources */,
-				B22685BA1A88463400AAC8A6 /* MasterViewController.m in Sources */,
+				E0F7B1271A8A9BA600CBD7BD /* AssetsTableViewController.m in Sources */,
+				B22685BA1A88463400AAC8A6 /* InsurentoriesTableViewController.m in Sources */,
 				B22685B71A88463400AAC8A6 /* Insurentory.xcdatamodeld in Sources */,
+				E0F7B1221A8A96A600CBD7BD /* EHDotLinkedStoryboardSegue.m in Sources */,
 				B22685B41A88463400AAC8A6 /* AppDelegate.m in Sources */,
+				E0F7B12A1A8A9BD600CBD7BD /* AssetViewController.m in Sources */,
 				E0DDB9AE1A89518F0044AF4D /* Insurentory.m in Sources */,
 				B22685B11A88463400AAC8A6 /* main.m in Sources */,
 			);
@@ -266,12 +288,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		B22685BE1A88463400AAC8A6 /* Main.storyboard */ = {
+		B22685BE1A88463400AAC8A6 /* Insurentories.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				B22685BF1A88463400AAC8A6 /* Base */,
 			);
-			name = Main.storyboard;
+			name = Insurentories.storyboard;
 			sourceTree = "<group>";
 		};
 		B22685C31A88463400AAC8A6 /* LaunchScreen.xib */ = {
@@ -370,6 +392,7 @@
 				INFOPLIST_FILE = Insurentory/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -380,6 +403,7 @@
 				INFOPLIST_FILE = Insurentory/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
