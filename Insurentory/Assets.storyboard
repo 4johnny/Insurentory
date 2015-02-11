@@ -15,11 +15,11 @@
                         <viewControllerLayoutGuide type="bottom" id="eX1-8T-F7J"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="gan-bT-Kau">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Detail view content goes here" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Aes-qc-XEr">
-                                <rect key="frame" x="20" y="292" width="560" height="17"/>
+                                <rect key="frame" x="20" y="260" width="560" height="17"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" size="system"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -41,7 +41,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v11-27-x2B" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="709" y="129"/>
+            <point key="canvasLocation" x="678" y="-626"/>
         </scene>
         <!--Assets-->
         <scene sceneID="gSy-6T-6en">
@@ -101,9 +101,6 @@
                                     </variation>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <segue destination="dbg-PS-kVj" kind="showDetail" identifier="showDetail" id="4NJ-Uh-1pj"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <sections/>
@@ -114,28 +111,18 @@
                     </tableView>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Assets" id="kbh-4d-fUD">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="DyF-vc-eSF"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="DyF-vc-eSF">
+                            <connections>
+                                <action selector="addPressed:" destination="aj0-rT-fnW" id="3fm-cs-OJ1"/>
+                                <segue destination="dOo-IJ-kZL" kind="show" identifier="showAsset" id="bmp-kc-klE"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uSZ-ea-ifu" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-45" y="-626"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="1ak-7k-0dA">
-            <objects>
-                <navigationController id="dbg-PS-kVj" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="g44-xK-GN6">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="dOo-IJ-kZL" kind="relationship" relationship="rootViewController" id="jcT-uT-JPb"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="MsC-cG-VKQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-45" y="129"/>
         </scene>
     </scenes>
     <resources>

@@ -21,6 +21,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+	
     [self configureView];
     
     UITapGestureRecognizer *backgroundTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handlebackgroundTap:)];
@@ -28,6 +29,7 @@
 }
 
 - (void)handlebackgroundTap:(UITapGestureRecognizer *)sender {
+	
     [self.view endEditing:YES];
 }
 
@@ -68,10 +70,14 @@
     if (!self.insurentory) return;
     
     // We have an insurentory, so load it into view
+	
     self.nameTextField.text = self.insurentory.name;
-    
+	
+	if (self.insurentory.notes) {
+		self.notesTextView.text = self.insurentory.notes;
+	}
     self.notesTextView.layer.borderColor = [UIColor blackColor].CGColor;
-    [self.notesTextView.layer setBorderWidth:1.0];
+    self.notesTextView.layer.borderWidth = 1.0;
     
     NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
@@ -87,20 +93,17 @@
         
         self.locationTextView.text = self.insurentory.locationDescription;
         self.locationTextView.editable = NO;
-        
-    } else {
-        
-        self.locationTextView.text = @"<Add address details>";
     }
 }
 
 
 - (IBAction)saveInventoryButtonPressed:(id)sender {
-    
+	
+	[self.view endEditing:YES];
+	
     self.insurentory.name = self.nameTextField.text;
     self.insurentory.notes = self.notesTextView.text;
 
-    
     self.insurentory.locationDescription =  self.locationTextView.text;
     
     // TODO: Instead use new AssetDelegate protocol

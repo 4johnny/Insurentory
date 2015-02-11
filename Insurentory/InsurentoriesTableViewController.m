@@ -31,6 +31,7 @@
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
+	
 	// Do any additional setup after loading the view, typically from a nib.
 	self.navigationItem.leftBarButtonItem = self.editButtonItem;
 
@@ -112,11 +113,14 @@
 #pragma mark - Segues
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-	if ([[segue identifier] isEqualToString:@"showDetail"]) {
+	
+	if ([[segue identifier] isEqualToString:@"showInsurentory"]) {
+		
 	    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
 	    Insurentory *currentInsurentory = [[self fetchedResultsController] objectAtIndexPath:indexPath];
-	    InsurentoryViewController *controller = (InsurentoryViewController *)[[segue destinationViewController] topViewController];
+	    InsurentoryViewController *controller = (InsurentoryViewController *)segue.destinationViewController;
 	    controller.insurentory = currentInsurentory;
+		
 	    controller.navigationItem.leftBarButtonItem = self.splitViewController.displayModeButtonItem;
 	    controller.navigationItem.leftItemsSupplementBackButton = YES;
 	}

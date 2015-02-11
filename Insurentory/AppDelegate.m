@@ -20,16 +20,13 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-	// Override point for customization after application launch.
-	UISplitViewController *splitViewController = (UISplitViewController *)self.window.rootViewController;
-	UINavigationController *navigationController = [splitViewController.viewControllers lastObject];
-	navigationController.topViewController.navigationItem.leftBarButtonItem = splitViewController.displayModeButtonItem;
-	splitViewController.delegate = self;
+	
+	// Inject MOC into Insurentories table view controller
+	UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
+	InsurentoriesTableViewController *insurentoriesTableViewController = (InsurentoriesTableViewController *)navigationController.topViewController;
+	insurentoriesTableViewController.managedObjectContext = self.managedObjectContext;
 
-	UINavigationController *masterNavigationController = splitViewController.viewControllers[0];
-	InsurentoriesTableViewController *controller = (InsurentoriesTableViewController *)masterNavigationController.topViewController;
-	controller.managedObjectContext = self.managedObjectContext;
-    
+	// Attempt to grab user location
     self.locationManager = [[CLLocationManager alloc] init];
     self.locationManager.delegate = self;
     [self.locationManager requestWhenInUseAuthorization];

@@ -92,10 +92,10 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 
 	// Do any additional setup after loading the view, typically from a nib.
-	self.navigationItem.leftBarButtonItem = self.editButtonItem;
+	//self.navigationItem.leftBarButtonItem = self.editButtonItem;
 	
-	UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
-	self.navigationItem.rightBarButtonItem = addButton;
+//	UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
+//	self.navigationItem.rightBarButtonItem = addButton;
 }
 
 
@@ -111,7 +111,7 @@
 	// Get the new view controller using [segue destinationViewController].
 	// Pass the selected object to the new view controller.
 
-	if ([[segue identifier] isEqualToString:@"showDetail"]) {
+	if ([[segue identifier] isEqualToString:@"showAsset"]) {
 		
 		// Inject asset model into asset view controller
 		NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
@@ -260,6 +260,17 @@
 #
 
 
+- (IBAction)addPressed:(UIBarButtonItem *)sender {
+	
+	[self insertNewObject:sender];
+}
+
+
+#
+# pragma mark Helpers
+#
+
+
 - (void)insertNewObject:(id)sender {
 	
 	NSManagedObjectContext *context = self.fetchedResultsController.managedObjectContext;
@@ -279,11 +290,6 @@
 		abort();
 	}
 }
-
-
-#
-# pragma mark Helpers
-#
 
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
