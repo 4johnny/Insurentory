@@ -10,6 +10,7 @@
 #import "AppDelegate.h"
 #import "Insurentory.h"
 #import "Asset.h"
+#import "AssetsTableViewController.h"
 
 @interface InsurentoryViewController ()
 
@@ -36,63 +37,78 @@
 }
 
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+
+    if ([[segue identifier] isEqualToString:@"Assets"]) {
+        
+
+        AssetsTableViewController *controller = (AssetsTableViewController *)[segue destinationViewController];
+        controller.insurentory = self.insurentory;
+
+    }
+
+}
+
 #pragma mark - Managing the detail item
 
-- (void)setDetailItem:(id)newDetailItem {
-	if (_detailItem != newDetailItem) {
-	    _detailItem = newDetailItem;
+- (void)setInsurentory:(id)newInsurentory {
+	if (_insurentory != newInsurentory) {
+	    _insurentory = newInsurentory;
 	        
 	    // Update the view.
 	    [self configureView];
 	}
 }
 
+
 - (void)configureView {
+    
 	// Update the user interface for the detail item.
-	if (self.detailItem) {
-        self.nameTextField.text = self.detailItem.name;
+    if (!self.insurentory) return;
+    
+    // We have an insurentory, so load it into view
+    self.nameTextField.text = self.insurentory.name;
+    
+    self.notesTextView.layer.borderColor = [UIColor blackColor].CGColor;
+    [self.notesTextView.layer setBorderWidth:1.0];
+    
+    NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
+    self.timestampLabel.text = [dateFormatter stringFromDate:self.insurentory.timeStamp];
+    
+    NSNumberFormatter *currencyFormatter = [[NSNumberFormatter alloc] init];
+    currencyFormatter.numberStyle = NSNumberFormatterCurrencyStyle;
+    self.totalValueLabel.text = [NSString stringWithFormat:@"%@", [currencyFormatter stringFromNumber:self.insurentory.totalValue]];
+
+    self.locationTextView.layer.borderColor = [UIColor blackColor].CGColor;
+    self.locationTextView.layer.borderWidth = 1.0;
+    if (self.insurentory.locationDescription != nil) {
         
-        [self.notesTextView.layer setBorderColor:[[UIColor blackColor] CGColor]];
-        [self.notesTextView.layer setBorderWidth:1.0];
+        self.locationTextView.text = self.insurentory.locationDescription;
+        self.locationTextView.editable = NO;
         
-        NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
-        [dateFormatter setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
-        self.timestampLabel.text = [dateFormatter stringFromDate:self.detailItem.timeStamp];
+    } else {
         
-        NSNumberFormatter *currencyFormatter = [[NSNumberFormatter alloc] init];
-        currencyFormatter.numberStyle = NSNumberFormatterCurrencyStyle;
-        self.totalValueLabel.text = [NSString stringWithFormat:@"%@",[currencyFormatter stringFromNumber:self.detailItem.totalValue]];
-        
-        self.locationTextField.text = self.detailItem.locationDescription;
-        
-        
-        [self.locationTextView.layer setBorderColor:[[UIColor blackColor] CGColor]];
-        [self.locationTextView.layer setBorderWidth:1.0];
-        if (self.detailItem.locationDescription != nil) {
-            self.locationTextView.text = self.detailItem.locationDescription;
-            [self.locationTextView setEditable:NO];
-        } else {
-            self.locationTextView.text = @"Add adress details...";
-        }
+        self.locationTextView.text = @"<Add address details>";
     }
 }
 
 
 - (IBAction)saveInventoryButtonPressed:(id)sender {
     
-    self.detailItem.name = self.nameTextField.text;
-    self.detailItem.notes = self.notesTextView.text;
+    self.insurentory.name = self.nameTextField.text;
+    self.insurentory.notes = self.notesTextView.text;
+
     
-    // get values from gps location at first if possible
-    //self.detailItem.locationDescription = self.locationTextField.text;
+    self.insurentory.locationDescription =  self.locationTextView.text;
     
-    self.detailItem.locationDescription =  self.locationTextView.text;
-    
+    // TODO: Instead use new AssetDelegate protocol
     NSDecimalNumber *assetsValue = [NSDecimalNumber zero];
-    for (Asset *asset in self.detailItem.assets) {
+    for (Asset *asset in self.insurentory.assets) {
         assetsValue = [assetsValue decimalNumberByAdding:asset.value];
     }
-    self.detailItem.totalValue = assetsValue;
+    self.insurentory.totalValue = assetsValue;
     
     [InsurentoryViewController saveObjectContext];
 }

@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#include "Insurentory.h"
 
 @interface AssetsTableViewController : UITableViewController
 
+@property (nonatomic) Insurentory *insurentory;
 @end
