@@ -10,7 +10,9 @@
 #import "InsurentoryViewController.h"
 #import "InsurentoriesTableViewController.h"
 
-@interface AppDelegate () <UISplitViewControllerDelegate>
+@interface AppDelegate () <UISplitViewControllerDelegate, CLLocationManagerDelegate>
+
+
 
 @end
 
@@ -27,6 +29,15 @@
 	UINavigationController *masterNavigationController = splitViewController.viewControllers[0];
 	InsurentoriesTableViewController *controller = (InsurentoriesTableViewController *)masterNavigationController.topViewController;
 	controller.managedObjectContext = self.managedObjectContext;
+    
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.delegate = self;
+    [self.locationManager requestWhenInUseAuthorization];
+    [self.locationManager startUpdatingLocation];
+    //NSLog(@"location: %@", self.locationManager.location);
+    
+    
+    
 	return YES;
 }
 
@@ -57,7 +68,7 @@
 #pragma mark - Split view
 
 - (BOOL)splitViewController:(UISplitViewController *)splitViewController collapseSecondaryViewController:(UIViewController *)secondaryViewController ontoPrimaryViewController:(UIViewController *)primaryViewController {
-    if ([secondaryViewController isKindOfClass:[UINavigationController class]] && [[(UINavigationController *)secondaryViewController topViewController] isKindOfClass:[InsurentoryViewController class]] && ([(InsurentoryViewController *)[(UINavigationController *)secondaryViewController topViewController] detailItem] == nil)) {
+    if ([secondaryViewController isKindOfClass:[UINavigationController class]] && [[(UINavigationController *)secondaryViewController topViewController] isKindOfClass:[InsurentoryViewController class]] && ([(InsurentoryViewController *)[(UINavigationController *)secondaryViewController topViewController] insurentory] == nil)) {
         // Return YES to indicate that we have handled the collapse by doing nothing; the secondary controller will be discarded.
         return YES;
     } else {

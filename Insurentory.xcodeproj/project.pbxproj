@@ -72,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E0AA6C691A8AEFE10062B138 /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,6 +92,7 @@
 				B22685AD1A88463400AAC8A6 /* Insurentory */,
 				B22685CD1A88463400AAC8A6 /* InsurentoryTests */,
 				B22685AC1A88463400AAC8A6 /* Products */,
+				E0AA6C681A8AEFE10062B138 /* CoreLocation.framework */,
 			);
 			sourceTree = "<group>";
 		};

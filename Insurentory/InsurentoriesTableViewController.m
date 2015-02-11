@@ -9,8 +9,13 @@
 #import "InsurentoriesTableViewController.h"
 #import "InsurentoryViewController.h"
 #import "Insurentory.h"
+#import "AppDelegate.h"
 
 @interface InsurentoriesTableViewController ()
+
+@property (nonatomic) CLLocation *insurentoryLocation;
+@property (nonatomic) NSString *insurentoryAddress;
+
 
 @end
 
@@ -32,7 +37,14 @@
 	UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
 	self.navigationItem.rightBarButtonItem = addButton;
 	self.detailViewController = (InsurentoryViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
+    
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    appDelegate.locationManager.delegate = self;
+    
 }
+
+
+
 
 - (void)didReceiveMemoryWarning {
 	[super didReceiveMemoryWarning];
@@ -48,6 +60,13 @@
     newInsurentory.timeStamp = [NSDate date];
     NSLog(@"Created new Inventory entity: %@", newInsurentory);
     
+    newInsurentory.locationLatitude = [NSNumber numberWithDouble:self.insurentoryLocation.coordinate.latitude];
+    newInsurentory.locationLongitude = [NSNumber numberWithDouble:self.insurentoryLocation.coordinate.longitude];
+    NSLog(@"Insurentory lat: %@ | lng: %@", newInsurentory.locationLatitude, newInsurentory.locationLongitude);
+    
+    newInsurentory.locationDescription = self.insurentoryAddress;
+    NSLog(@"Insurentory locationDescription : %@", newInsurentory.locationDescription);
+    
 	    
 	// Save the context.
 	NSError *error = nil;
@@ -59,6 +78,37 @@
 	}
 }
 
+
+#pragma mark - Location Manager Delegate 
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{
+    
+    self.insurentoryLocation = [locations lastObject];
+    NSLog(@"Current location %@", self.insurentoryLocation);
+    [manager stopUpdatingLocation];
+    
+    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+    [geocoder reverseGeocodeLocation:[locations lastObject] completionHandler:^(NSArray *placemarks, NSError *error)
+     {
+         if (!(error))
+         {
+             CLPlacemark *placemark = [placemarks lastObject];
+             self.insurentoryAddress = [placemark.addressDictionary[@"FormattedAddressLines"] componentsJoinedByString:@", "];
+             //NSLog(@"Geocode addr: %@", self.insurentoryAddress);
+
+         } else {
+             NSLog(@"Geocoder failed with error %@", [error localizedDescription]);
+         }
+     }];
+
+}
+
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
+{
+    NSLog(@"Location manager error %@", [error localizedDescription]);
+}
+
+
 #pragma mark - Segues
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -66,31 +116,39 @@
 	    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
 	    Insurentory *currentInsurentory = [[self fetchedResultsController] objectAtIndexPath:indexPath];
 	    InsurentoryViewController *controller = (InsurentoryViewController *)[[segue destinationViewController] topViewController];
-	    controller.detailItem = currentInsurentory;
+	    controller.insurentory = currentInsurentory;
 	    controller.navigationItem.leftBarButtonItem = self.splitViewController.displayModeButtonItem;
 	    controller.navigationItem.leftItemsSupplementBackButton = YES;
 	}
 }
 
+
 #pragma mark - Table View
 
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    
 	return [[self.fetchedResultsController sections] count];
 }
 
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    
 	id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
 	return [sectionInfo numberOfObjects];
 }
 
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    
+	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"insurentoryCell" forIndexPath:indexPath];
 	[self configureCell:cell atIndexPath:indexPath];
 	return cell;
 }
 
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+    
     Insurentory *insurentory = [self.fetchedResultsController objectAtIndexPath:indexPath];
     cell.textLabel.text = insurentory.name;
     
@@ -101,17 +159,22 @@
 
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    
 	// Return NO if you do not want the specified item to be editable.
 	return YES;
 }
 
+
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    
 	if (editingStyle == UITableViewCellEditingStyleDelete) {
+        
 	    NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
 	    [context deleteObject:[self.fetchedResultsController objectAtIndexPath:indexPath]];
 	        
 	    NSError *error = nil;
 	    if (![context save:&error]) {
+            
 	        // Replace this implementation with code to handle the error appropriately.
 	        // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
 	        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
@@ -119,6 +182,8 @@
 	    }
 	}
 }
+
+
 
 
 #pragma mark - Fetched results controller
@@ -160,15 +225,20 @@
     return _fetchedResultsController;
 }    
 
-- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller
-{
+
+- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
+    
     [self.tableView beginUpdates];
 }
 
-- (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id <NSFetchedResultsSectionInfo>)sectionInfo
-           atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type
-{
+
+- (void)controller:(NSFetchedResultsController *)controller
+  didChangeSection:(id <NSFetchedResultsSectionInfo>)sectionInfo
+           atIndex:(NSUInteger)sectionIndex
+     forChangeType:(NSFetchedResultsChangeType)type {
+    
     switch(type) {
+            
         case NSFetchedResultsChangeInsert:
             [self.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
             break;
@@ -182,13 +252,17 @@
     }
 }
 
-- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject
-       atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type
-      newIndexPath:(NSIndexPath *)newIndexPath
-{
+
+- (void)controller:(NSFetchedResultsController *)controller
+   didChangeObject:(id)anObject
+       atIndexPath:(NSIndexPath *)indexPath
+     forChangeType:(NSFetchedResultsChangeType)type
+      newIndexPath:(NSIndexPath *)newIndexPath {
+    
     UITableView *tableView = self.tableView;
     
     switch(type) {
+            
         case NSFetchedResultsChangeInsert:
             [tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
             break;
@@ -208,8 +282,9 @@
     }
 }
 
-- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
-{
+
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
+    
     [self.tableView endUpdates];
 }
 
@@ -222,5 +297,6 @@
     [self.tableView reloadData];
 }
  */
+
 
 @end

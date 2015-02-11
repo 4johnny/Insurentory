@@ -23,4 +23,5 @@
 
 @property (strong, nonatomic) NSFetchedResultsController* fetchedResultsController;
 
+@property (nonatomic) Insurentory *insurentory;
 @end
