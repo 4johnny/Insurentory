@@ -9,8 +9,12 @@
 #import "InsurentoriesTableViewController.h"
 #import "InsurentoryViewController.h"
 #import "Insurentory.h"
+#import "AppDelegate.h"
 
 @interface InsurentoriesTableViewController ()
+
+@property (nonatomic) CLLocation *insurentoryLocation;
+
 
 @end
 
@@ -32,6 +36,9 @@
 	UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
 	self.navigationItem.rightBarButtonItem = addButton;
 	self.detailViewController = (InsurentoryViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
+    
+    
+    ((AppDelegate*)[UIApplication sharedApplication].delegate).locationManager.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -48,6 +55,11 @@
     newInsurentory.timeStamp = [NSDate date];
     NSLog(@"Created new Inventory entity: %@", newInsurentory);
     
+    newInsurentory.locationLatitude = [NSNumber numberWithDouble:self.insurentoryLocation.coordinate.latitude];
+    newInsurentory.locationLongitude = [NSNumber numberWithDouble:self.insurentoryLocation.coordinate.longitude];
+    
+    NSLog(@"lat:%@ | lng: %@", newInsurentory.locationLatitude, newInsurentory.locationLongitude);
+    
 	    
 	// Save the context.
 	NSError *error = nil;
@@ -58,6 +70,21 @@
 	    abort();
 	}
 }
+
+#pragma mark - Location Manager Delegate 
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{
+    
+    self.insurentoryLocation = [locations lastObject];
+    NSLog(@"Current location %@", self.insurentoryLocation);
+    [manager stopUpdatingLocation];
+}
+
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
+{
+    NSLog(@"Location manager error %@", [error localizedDescription]);
+}
+
 
 #pragma mark - Segues
 
@@ -119,6 +146,8 @@
 	    }
 	}
 }
+
+
 
 
 #pragma mark - Fetched results controller

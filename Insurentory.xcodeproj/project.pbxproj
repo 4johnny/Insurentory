@@ -16,6 +16,7 @@
 		B22685C21A88463400AAC8A6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B22685C11A88463400AAC8A6 /* Images.xcassets */; };
 		B22685C51A88463400AAC8A6 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B22685C31A88463400AAC8A6 /* LaunchScreen.xib */; };
 		B22685D11A88463400AAC8A6 /* InsurentoryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B22685D01A88463400AAC8A6 /* InsurentoryTests.m */; };
+		E0AA6C691A8AEFE10062B138 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0AA6C681A8AEFE10062B138 /* CoreLocation.framework */; };
 		E0DDB9AB1A8951550044AF4D /* Asset.m in Sources */ = {isa = PBXBuildFile; fileRef = E0DDB9AA1A8951550044AF4D /* Asset.m */; };
 		E0DDB9AE1A89518F0044AF4D /* Insurentory.m in Sources */ = {isa = PBXBuildFile; fileRef = E0DDB9AD1A89518F0044AF4D /* Insurentory.m */; };
 		E0F7B1221A8A96A600CBD7BD /* EHDotLinkedStoryboardSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = E0F7B1211A8A96A600CBD7BD /* EHDotLinkedStoryboardSegue.m */; };
@@ -51,6 +52,7 @@
 		B22685CA1A88463400AAC8A6 /* InsurentoryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InsurentoryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B22685CF1A88463400AAC8A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B22685D01A88463400AAC8A6 /* InsurentoryTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InsurentoryTests.m; sourceTree = "<group>"; };
+		E0AA6C681A8AEFE10062B138 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		E0DDB9A91A8951550044AF4D /* Asset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Asset.h; sourceTree = "<group>"; };
 		E0DDB9AA1A8951550044AF4D /* Asset.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Asset.m; sourceTree = "<group>"; };
 		E0DDB9AC1A89518F0044AF4D /* Insurentory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Insurentory.h; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E0AA6C691A8AEFE10062B138 /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,6 +91,7 @@
 				B22685AD1A88463400AAC8A6 /* Insurentory */,
 				B22685CD1A88463400AAC8A6 /* InsurentoryTests */,
 				B22685AC1A88463400AAC8A6 /* Products */,
+				E0AA6C681A8AEFE10062B138 /* CoreLocation.framework */,
 			);
 			sourceTree = "<group>";
 		};

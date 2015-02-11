@@ -10,7 +10,9 @@
 #import "InsurentoryViewController.h"
 #import "InsurentoriesTableViewController.h"
 
-@interface AppDelegate () <UISplitViewControllerDelegate>
+@interface AppDelegate () <UISplitViewControllerDelegate, CLLocationManagerDelegate>
+
+
 
 @end
 
@@ -27,6 +29,15 @@
 	UINavigationController *masterNavigationController = splitViewController.viewControllers[0];
 	InsurentoriesTableViewController *controller = (InsurentoriesTableViewController *)masterNavigationController.topViewController;
 	controller.managedObjectContext = self.managedObjectContext;
+    
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.delegate = self;
+    [self.locationManager requestWhenInUseAuthorization];
+    [self.locationManager startUpdatingLocation];
+    //NSLog(@"location: %@", self.locationManager.location);
+    
+    
+    
 	return YES;
 }
 

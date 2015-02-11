@@ -8,15 +8,18 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
+#import <CoreLocation/CoreLocation.h>
 
 @class InsurentoryViewController;
 
-@interface InsurentoriesTableViewController : UITableViewController <NSFetchedResultsControllerDelegate>
+@interface InsurentoriesTableViewController : UITableViewController <NSFetchedResultsControllerDelegate, CLLocationManagerDelegate>
 
 @property (strong, nonatomic) InsurentoryViewController *detailViewController;
 
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+
+
 
 
 @end
