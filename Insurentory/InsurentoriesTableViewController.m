@@ -38,9 +38,13 @@
 	self.navigationItem.rightBarButtonItem = addButton;
 	self.detailViewController = (InsurentoryViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
     
+    AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    appDelegate.locationManager.delegate = self;
     
-    ((AppDelegate*)[UIApplication sharedApplication].delegate).locationManager.delegate = self;
 }
+
+
+
 
 - (void)didReceiveMemoryWarning {
 	[super didReceiveMemoryWarning];
@@ -74,11 +78,6 @@
 	}
 }
 
-
-- (void)getLocationAddressForInsurentory:(Insurentory *)insurentory
-{
-    
-}
 
 #pragma mark - Location Manager Delegate 
 
