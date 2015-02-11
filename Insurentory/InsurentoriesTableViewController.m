@@ -14,6 +14,7 @@
 @interface InsurentoriesTableViewController ()
 
 @property (nonatomic) CLLocation *insurentoryLocation;
+@property (nonatomic) NSString *insurentoryAddress;
 
 
 @end
@@ -57,8 +58,10 @@
     
     newInsurentory.locationLatitude = [NSNumber numberWithDouble:self.insurentoryLocation.coordinate.latitude];
     newInsurentory.locationLongitude = [NSNumber numberWithDouble:self.insurentoryLocation.coordinate.longitude];
+    NSLog(@"Insurentory lat: %@ | lng: %@", newInsurentory.locationLatitude, newInsurentory.locationLongitude);
     
-    NSLog(@"lat:%@ | lng: %@", newInsurentory.locationLatitude, newInsurentory.locationLongitude);
+    newInsurentory.locationDescription = self.insurentoryAddress;
+    NSLog(@"Insurentory locationDescription : %@", newInsurentory.locationDescription);
     
 	    
 	// Save the context.
@@ -71,6 +74,12 @@
 	}
 }
 
+
+- (void)getLocationAddressForInsurentory:(Insurentory *)insurentory
+{
+    
+}
+
 #pragma mark - Location Manager Delegate 
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{
@@ -78,6 +87,21 @@
     self.insurentoryLocation = [locations lastObject];
     NSLog(@"Current location %@", self.insurentoryLocation);
     [manager stopUpdatingLocation];
+    
+    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+    [geocoder reverseGeocodeLocation:[locations lastObject] completionHandler:^(NSArray *placemarks, NSError *error)
+     {
+         if (!(error))
+         {
+             CLPlacemark *placemark = [placemarks lastObject];
+             self.insurentoryAddress = [placemark.addressDictionary[@"FormattedAddressLines"] componentsJoinedByString:@", "];
+             //NSLog(@"Geocode addr: %@", self.insurentoryAddress);
+
+         } else {
+             NSLog(@"Geocoder failed with error %@", [error localizedDescription]);
+         }
+     }];
+
 }
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
@@ -160,7 +184,7 @@
     
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     // Edit the entity name as appropriate.
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Inventory" inManagedObjectContext:self.managedObjectContext];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Insurentory" inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
     
     // Set the batch size to a suitable number.
