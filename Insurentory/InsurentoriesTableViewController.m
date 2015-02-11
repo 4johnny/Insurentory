@@ -19,6 +19,9 @@
 
 @end
 
+
+
+
 @implementation InsurentoriesTableViewController
 
 - (void)awakeFromNib {
