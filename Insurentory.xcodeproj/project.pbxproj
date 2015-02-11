@@ -16,8 +16,9 @@
 		B22685C21A88463400AAC8A6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B22685C11A88463400AAC8A6 /* Images.xcassets */; };
 		B22685C51A88463400AAC8A6 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B22685C31A88463400AAC8A6 /* LaunchScreen.xib */; };
 		B22685D11A88463400AAC8A6 /* InsurentoryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B22685D01A88463400AAC8A6 /* InsurentoryTests.m */; };
-		E0DDB9AB1A8951550044AF4D /* Asset.m in Sources */ = {isa = PBXBuildFile; fileRef = E0DDB9AA1A8951550044AF4D /* Asset.m */; };
-		E0DDB9AE1A89518F0044AF4D /* Insurentory.m in Sources */ = {isa = PBXBuildFile; fileRef = E0DDB9AD1A89518F0044AF4D /* Insurentory.m */; };
+		B258508B1A8B541300FDB71A /* Insurentory.m in Sources */ = {isa = PBXBuildFile; fileRef = B258508A1A8B541300FDB71A /* Insurentory.m */; };
+		B258508E1A8B541300FDB71A /* Asset.m in Sources */ = {isa = PBXBuildFile; fileRef = B258508D1A8B541300FDB71A /* Asset.m */; };
+		B25850911A8B5C7200FDB71A /* AssetTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B25850901A8B5C7200FDB71A /* AssetTableViewCell.m */; };
 		E0F7B1221A8A96A600CBD7BD /* EHDotLinkedStoryboardSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = E0F7B1211A8A96A600CBD7BD /* EHDotLinkedStoryboardSegue.m */; };
 		E0F7B1241A8A974E00CBD7BD /* Assets.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0F7B1231A8A974E00CBD7BD /* Assets.storyboard */; };
 		E0F7B1271A8A9BA600CBD7BD /* AssetsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E0F7B1261A8A9BA600CBD7BD /* AssetsTableViewController.m */; };
@@ -51,10 +52,12 @@
 		B22685CA1A88463400AAC8A6 /* InsurentoryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InsurentoryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B22685CF1A88463400AAC8A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B22685D01A88463400AAC8A6 /* InsurentoryTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InsurentoryTests.m; sourceTree = "<group>"; };
-		E0DDB9A91A8951550044AF4D /* Asset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Asset.h; sourceTree = "<group>"; };
-		E0DDB9AA1A8951550044AF4D /* Asset.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Asset.m; sourceTree = "<group>"; };
-		E0DDB9AC1A89518F0044AF4D /* Insurentory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Insurentory.h; sourceTree = "<group>"; };
-		E0DDB9AD1A89518F0044AF4D /* Insurentory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Insurentory.m; sourceTree = "<group>"; };
+		B25850891A8B541300FDB71A /* Insurentory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Insurentory.h; sourceTree = "<group>"; };
+		B258508A1A8B541300FDB71A /* Insurentory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Insurentory.m; sourceTree = "<group>"; };
+		B258508C1A8B541300FDB71A /* Asset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Asset.h; sourceTree = "<group>"; };
+		B258508D1A8B541300FDB71A /* Asset.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Asset.m; sourceTree = "<group>"; };
+		B258508F1A8B5C7200FDB71A /* AssetTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssetTableViewCell.h; sourceTree = "<group>"; };
+		B25850901A8B5C7200FDB71A /* AssetTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssetTableViewCell.m; sourceTree = "<group>"; };
 		E0F7B1201A8A96A600CBD7BD /* EHDotLinkedStoryboardSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EHDotLinkedStoryboardSegue.h; sourceTree = "<group>"; };
 		E0F7B1211A8A96A600CBD7BD /* EHDotLinkedStoryboardSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EHDotLinkedStoryboardSegue.m; sourceTree = "<group>"; };
 		E0F7B1231A8A974E00CBD7BD /* Assets.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Assets.storyboard; sourceTree = "<group>"; };
@@ -111,15 +114,13 @@
 				B22685BC1A88463400AAC8A6 /* InsurentoryViewController.m */,
 				E0F7B1251A8A9BA600CBD7BD /* AssetsTableViewController.h */,
 				E0F7B1261A8A9BA600CBD7BD /* AssetsTableViewController.m */,
-				E0DDB9AC1A89518F0044AF4D /* Insurentory.h */,
-				E0DDB9AD1A89518F0044AF4D /* Insurentory.m */,
+				B258508F1A8B5C7200FDB71A /* AssetTableViewCell.h */,
+				B25850901A8B5C7200FDB71A /* AssetTableViewCell.m */,
 				E0F7B1281A8A9BD600CBD7BD /* AssetViewController.h */,
 				E0F7B1291A8A9BD600CBD7BD /* AssetViewController.m */,
-				E0DDB9A91A8951550044AF4D /* Asset.h */,
-				E0DDB9AA1A8951550044AF4D /* Asset.m */,
 				B22685BE1A88463400AAC8A6 /* Insurentories.storyboard */,
 				E0F7B1231A8A974E00CBD7BD /* Assets.storyboard */,
-				B22685B51A88463400AAC8A6 /* Insurentory.xcdatamodeld */,
+				B25850851A8B519400FDB71A /* Data Model (Auto-Generated) */,
 				B22685AE1A88463400AAC8A6 /* Supporting Files */,
 			);
 			path = Insurentory;
@@ -153,6 +154,18 @@
 				B22685CF1A88463400AAC8A6 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B25850851A8B519400FDB71A /* Data Model (Auto-Generated) */ = {
+			isa = PBXGroup;
+			children = (
+				B258508C1A8B541300FDB71A /* Asset.h */,
+				B258508D1A8B541300FDB71A /* Asset.m */,
+				B25850891A8B541300FDB71A /* Insurentory.h */,
+				B258508A1A8B541300FDB71A /* Insurentory.m */,
+				B22685B51A88463400AAC8A6 /* Insurentory.xcdatamodeld */,
+			);
+			name = "Data Model (Auto-Generated)";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,14 +270,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				B22685BD1A88463400AAC8A6 /* InsurentoryViewController.m in Sources */,
-				E0DDB9AB1A8951550044AF4D /* Asset.m in Sources */,
 				E0F7B1271A8A9BA600CBD7BD /* AssetsTableViewController.m in Sources */,
+				B258508E1A8B541300FDB71A /* Asset.m in Sources */,
 				B22685BA1A88463400AAC8A6 /* InsurentoriesTableViewController.m in Sources */,
 				B22685B71A88463400AAC8A6 /* Insurentory.xcdatamodeld in Sources */,
+				B25850911A8B5C7200FDB71A /* AssetTableViewCell.m in Sources */,
 				E0F7B1221A8A96A600CBD7BD /* EHDotLinkedStoryboardSegue.m in Sources */,
 				B22685B41A88463400AAC8A6 /* AppDelegate.m in Sources */,
 				E0F7B12A1A8A9BD600CBD7BD /* AssetViewController.m in Sources */,
-				E0DDB9AE1A89518F0044AF4D /* Insurentory.m in Sources */,
+				B258508B1A8B541300FDB71A /* Insurentory.m in Sources */,
 				B22685B11A88463400AAC8A6 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

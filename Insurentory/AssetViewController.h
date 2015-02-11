@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Asset.h"
 
 @interface AssetViewController : UIViewController
+
+@property (nonatomic) Asset* asset;
 
 @end

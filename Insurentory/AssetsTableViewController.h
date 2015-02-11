@@ -7,7 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Insurentory.h"
 
-@interface AssetsTableViewController : UITableViewController
+#
+# pragma mark - Interface
+#
+
+@interface AssetsTableViewController : UITableViewController <NSFetchedResultsControllerDelegate>
+
+#
+# pragma mark Properties
+#
+
+@property (nonatomic) Insurentory* insurentory;
+
+@property (strong, nonatomic) NSFetchedResultsController* fetchedResultsController;
 
 @end
