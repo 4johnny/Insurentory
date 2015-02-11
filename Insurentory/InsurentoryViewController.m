@@ -17,6 +17,25 @@
 
 @implementation InsurentoryViewController
 
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    [self configureView];
+    
+    UITapGestureRecognizer *backgroundTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handlebackgroundTap:)];
+    [self.view addGestureRecognizer:backgroundTap];
+}
+
+- (void)handlebackgroundTap:(UITapGestureRecognizer *)sender {
+    [self.view endEditing:YES];
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+
 #pragma mark - Managing the detail item
 
 - (void)setDetailItem:(id)newDetailItem {
@@ -44,25 +63,19 @@
         currencyFormatter.numberStyle = NSNumberFormatterCurrencyStyle;
         self.totalValueLabel.text = [NSString stringWithFormat:@"%@",[currencyFormatter stringFromNumber:self.detailItem.totalValue]];
         
-        if (self.detailItem.locationLatitude.floatValue != 0 || self.detailItem.locationLongitude.floatValue != 0) {
-            self.locationTextField.hidden = YES;
-        }
+        self.locationTextField.text = self.detailItem.locationDescription;
         
+        
+        [self.locationTextView.layer setBorderColor:[[UIColor blackColor] CGColor]];
+        [self.locationTextView.layer setBorderWidth:1.0];
+        if (self.detailItem.locationDescription != nil) {
+            self.locationTextView.text = self.detailItem.locationDescription;
+            [self.locationTextView setEditable:NO];
+        } else {
+            self.locationTextView.text = @"Add adress details...";
+        }
     }
 }
-
-- (void)viewDidLoad {
-	[super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
-	[self configureView];
-}
-
-- (void)didReceiveMemoryWarning {
-	[super didReceiveMemoryWarning];
-	// Dispose of any resources that can be recreated.
-}
-
-
 
 
 - (IBAction)saveInventoryButtonPressed:(id)sender {
@@ -70,8 +83,10 @@
     self.detailItem.name = self.nameTextField.text;
     self.detailItem.notes = self.notesTextView.text;
     
-    // get values from gps location at first is possible
-    self.detailItem.locationDescription = self.locationTextField.text;
+    // get values from gps location at first if possible
+    //self.detailItem.locationDescription = self.locationTextField.text;
+    
+    self.detailItem.locationDescription =  self.locationTextView.text;
     
     NSDecimalNumber *assetsValue = [NSDecimalNumber zero];
     for (Asset *asset in self.detailItem.assets) {
