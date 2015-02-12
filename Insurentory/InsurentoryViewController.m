@@ -85,7 +85,7 @@
     
     NSNumberFormatter *currencyFormatter = [[NSNumberFormatter alloc] init];
     currencyFormatter.numberStyle = NSNumberFormatterCurrencyStyle;
-    self.totalValueLabel.text = [NSString stringWithFormat:@"%@", [currencyFormatter stringFromNumber:self.insurentory.totalValue]];
+    self.totalValueLabel.text = [currencyFormatter stringFromNumber:self.insurentory.totalValue];
 
     self.locationTextView.layer.borderColor = [UIColor blackColor].CGColor;
     self.locationTextView.layer.borderWidth = 1.0;
