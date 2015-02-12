@@ -1,5 +1,5 @@
 //
-//  AssetsViewController.h
+//  AssetsTableViewController.h
 //  Insurentory
 //
 //  Created by JoLi on 2015-02-10.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Insurentory.h"
-#import "AssetViewController.h"
+#import "AssetStaticTableViewController.h"
 
 #
 # pragma mark - Interface

@@ -1,5 +1,5 @@
 //
-//  AssetsViewController.m
+//  AssetsTableViewController.m
 //  Insurentory
 //
 //  Created by JoLi on 2015-02-10.
@@ -7,7 +7,7 @@
 //
 
 #import "AssetsTableViewController.h"
-#import "AssetViewController.h"
+#import "AssetStaticTableViewController.h"
 #import "AssetTableViewCell.h"
 
 
@@ -17,6 +17,8 @@
 
 
 @interface AssetsTableViewController ()
+
+@property (nonatomic) BOOL needsShowAssetSeque;
 
 @end
 
@@ -41,7 +43,7 @@
 	// Build fetch request for assets in this inventory, sorted by timestamp
 	NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"Asset"];
 	fetchRequest.fetchBatchSize = 20;
-	fetchRequest.sortDescriptors = @[[[NSSortDescriptor alloc] initWithKey:@"timeStamp" ascending:YES]];
+	fetchRequest.sortDescriptors = @[[[NSSortDescriptor alloc] initWithKey:@"timeStamp" ascending:NO]];
 	fetchRequest.predicate = [NSPredicate predicateWithFormat:@"insurentory.timeStamp == %@", self.insurentory.timeStamp];
 	
 	// Edit the section name key path and cache name if appropriate.
@@ -97,6 +99,8 @@
 	
 	//	UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
 	//	self.navigationItem.rightBarButtonItem = addButton;
+	
+	self.needsShowAssetSeque = NO;
 }
 
 
@@ -116,7 +120,7 @@
 		
 		// Inject asset model into asset view controller
 		NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-		AssetViewController* assetViewController = segue.destinationViewController;
+		AssetStaticTableViewController* assetViewController = segue.destinationViewController;
 		assetViewController.asset = [self.fetchedResultsController objectAtIndexPath:indexPath];
 		assetViewController.delegate = self;
 	}
@@ -247,6 +251,14 @@
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
 	
 	[self.tableView endUpdates];
+	
+	if (self.needsShowAssetSeque) {
+		self.needsShowAssetSeque = NO;
+
+		// Select first item, since our sort order is inserting at top of list
+		[self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0] animated:YES scrollPosition:UITableViewScrollPositionNone];
+		[self performSegueWithIdentifier:@"showAsset" sender:self];
+	}
 }
 
 
@@ -279,6 +291,7 @@
 
 - (IBAction)addPressed:(UIBarButtonItem *)sender {
 	
+	self.needsShowAssetSeque = YES;
 	[self insertNewObject:sender];
 }
 
