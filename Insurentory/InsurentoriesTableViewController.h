@@ -10,11 +10,11 @@
 #import <CoreData/CoreData.h>
 #import <CoreLocation/CoreLocation.h>
 
-@class InsurentoryViewController;
+@class InsurentoryStaticTableViewController;
 
 @interface InsurentoriesTableViewController : UITableViewController <NSFetchedResultsControllerDelegate, CLLocationManagerDelegate>
 
-@property (strong, nonatomic) InsurentoryViewController *detailViewController;
+@property (strong, nonatomic) InsurentoryStaticTableViewController *detailViewController;
 
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;

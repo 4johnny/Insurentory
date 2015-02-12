@@ -11,7 +11,7 @@
 
 @class Insurentory;
 
-@interface InsurentoryViewController : UIViewController <UITextFieldDelegate, AssetUpdateDelegate>
+@interface InsurentoryStaticTableViewController : UITableViewController <UITextFieldDelegate, AssetUpdateDelegate>
 
 @property (strong, nonatomic) Insurentory *insurentory;
 

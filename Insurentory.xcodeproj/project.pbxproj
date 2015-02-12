@@ -12,7 +12,7 @@
 		B22685B41A88463400AAC8A6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B22685B31A88463400AAC8A6 /* AppDelegate.m */; };
 		B22685B71A88463400AAC8A6 /* Insurentory.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B22685B51A88463400AAC8A6 /* Insurentory.xcdatamodeld */; };
 		B22685BA1A88463400AAC8A6 /* InsurentoriesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B22685B91A88463400AAC8A6 /* InsurentoriesTableViewController.m */; };
-		B22685BD1A88463400AAC8A6 /* InsurentoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B22685BC1A88463400AAC8A6 /* InsurentoryViewController.m */; };
+		B22685BD1A88463400AAC8A6 /* InsurentoryStaticTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B22685BC1A88463400AAC8A6 /* InsurentoryStaticTableViewController.m */; };
 		B22685C01A88463400AAC8A6 /* Insurentories.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B22685BE1A88463400AAC8A6 /* Insurentories.storyboard */; };
 		B22685C21A88463400AAC8A6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B22685C11A88463400AAC8A6 /* Images.xcassets */; };
 		B22685C51A88463400AAC8A6 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B22685C31A88463400AAC8A6 /* LaunchScreen.xib */; };
@@ -49,8 +49,8 @@
 		B22685B61A88463400AAC8A6 /* Insurentory.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Insurentory.xcdatamodel; sourceTree = "<group>"; };
 		B22685B81A88463400AAC8A6 /* InsurentoriesTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InsurentoriesTableViewController.h; sourceTree = "<group>"; };
 		B22685B91A88463400AAC8A6 /* InsurentoriesTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InsurentoriesTableViewController.m; sourceTree = "<group>"; };
-		B22685BB1A88463400AAC8A6 /* InsurentoryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InsurentoryViewController.h; sourceTree = "<group>"; };
-		B22685BC1A88463400AAC8A6 /* InsurentoryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InsurentoryViewController.m; sourceTree = "<group>"; };
+		B22685BB1A88463400AAC8A6 /* InsurentoryStaticTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InsurentoryStaticTableViewController.h; sourceTree = "<group>"; };
+		B22685BC1A88463400AAC8A6 /* InsurentoryStaticTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InsurentoryStaticTableViewController.m; sourceTree = "<group>"; };
 		B22685BF1A88463400AAC8A6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Insurentories.storyboard; sourceTree = "<group>"; };
 		B22685C11A88463400AAC8A6 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		B22685C41A88463400AAC8A6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -138,8 +138,8 @@
 				B22685B31A88463400AAC8A6 /* AppDelegate.m */,
 				B22685B81A88463400AAC8A6 /* InsurentoriesTableViewController.h */,
 				B22685B91A88463400AAC8A6 /* InsurentoriesTableViewController.m */,
-				B22685BB1A88463400AAC8A6 /* InsurentoryViewController.h */,
-				B22685BC1A88463400AAC8A6 /* InsurentoryViewController.m */,
+				B22685BB1A88463400AAC8A6 /* InsurentoryStaticTableViewController.h */,
+				B22685BC1A88463400AAC8A6 /* InsurentoryStaticTableViewController.m */,
 				E0F7B1251A8A9BA600CBD7BD /* AssetsTableViewController.h */,
 				E0F7B1261A8A9BA600CBD7BD /* AssetsTableViewController.m */,
 				B258508F1A8B5C7200FDB71A /* AssetTableViewCell.h */,
@@ -332,7 +332,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B22685BD1A88463400AAC8A6 /* InsurentoryViewController.m in Sources */,
+				B22685BD1A88463400AAC8A6 /* InsurentoryStaticTableViewController.m in Sources */,
 				E0F7B1271A8A9BA600CBD7BD /* AssetsTableViewController.m in Sources */,
 				B258508E1A8B541300FDB71A /* Asset.m in Sources */,
 				B22685BA1A88463400AAC8A6 /* InsurentoriesTableViewController.m in Sources */,

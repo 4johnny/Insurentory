@@ -7,7 +7,7 @@
 //
 
 #import "InsurentoriesTableViewController.h"
-#import "InsurentoryViewController.h"
+#import "InsurentoryStaticTableViewController.h"
 #import "Insurentory.h"
 #import "AppDelegate.h"
 
@@ -40,7 +40,7 @@
 
 	UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
 	self.navigationItem.rightBarButtonItem = addButton;
-	self.detailViewController = (InsurentoryViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
+	self.detailViewController = (InsurentoryStaticTableViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
     
     AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     appDelegate.locationManager.delegate = self;
@@ -121,7 +121,7 @@
 		
 	    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
 	    Insurentory *currentInsurentory = [[self fetchedResultsController] objectAtIndexPath:indexPath];
-	    InsurentoryViewController *controller = (InsurentoryViewController *)segue.destinationViewController;
+	    InsurentoryStaticTableViewController *controller = (InsurentoryStaticTableViewController *)segue.destinationViewController;
 	    controller.insurentory = currentInsurentory;
 		
 	    controller.navigationItem.leftBarButtonItem = self.splitViewController.displayModeButtonItem;

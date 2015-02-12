@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Empath Solutions. All rights reserved.
 //
 
-#import "InsurentoryViewController.h"
+#import "InsurentoryStaticTableViewController.h"
 #import "AppDelegate.h"
 #import "Insurentory.h"
 #import "Asset.h"
@@ -15,11 +15,11 @@
 #import <MessageUI/MessageUI.h>
 
 
-@interface InsurentoryViewController () <MFMailComposeViewControllerDelegate>
+@interface InsurentoryStaticTableViewController () <MFMailComposeViewControllerDelegate>
 
 @end
 
-@implementation InsurentoryViewController
+@implementation InsurentoryStaticTableViewController
 
 
 - (void)viewDidLoad {
@@ -68,7 +68,7 @@
     
     self.insurentory.totalValue = [self.insurentory.totalValue decimalNumberByAdding:[NSDecimalNumber decimalNumberWithDecimal:[NSNumber numberWithDouble:valueDelta].decimalValue]];
     self.insurentory.timeStamp = [NSDate date];
-    [InsurentoryViewController saveObjectContext];
+    [InsurentoryStaticTableViewController saveObjectContext];
     
 }
 
@@ -123,7 +123,7 @@
     self.insurentory.notes = self.notesTextView.text;
     self.insurentory.locationDescription =  self.locationTextView.text;
     
-    [InsurentoryViewController saveObjectContext];
+    [InsurentoryStaticTableViewController saveObjectContext];
 }
 
 
