@@ -294,9 +294,9 @@
 	NSEntityDescription *entity = self.fetchedResultsController.fetchRequest.entity;
 	
 	Asset* newAsset = [NSEntityDescription insertNewObjectForEntityForName:entity.name inManagedObjectContext:context];
-	
 	newAsset.timeStamp = [NSDate date];
 	newAsset.insurentory = self.insurentory;
+    [self.insurentory addAssetsObject:newAsset];
 	NSLog(@"Created new Asset entity: %@", newAsset);
 
 	// Save the context

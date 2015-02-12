@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AssetViewController.h"
 
 @class Insurentory;
 
-@interface InsurentoryViewController : UIViewController <UITextFieldDelegate>
+@interface InsurentoryViewController : UIViewController <UITextFieldDelegate, AssetUpdateDelegate>
 
 @property (strong, nonatomic) Insurentory *insurentory;
 

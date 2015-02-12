@@ -25,12 +25,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
-    [self configureView];
+    
     
     UITapGestureRecognizer *backgroundTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handlebackgroundTap:)];
     [self.view addGestureRecognizer:backgroundTap];
 }
 
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self configureView];
+    
+}
 - (void)handlebackgroundTap:(UITapGestureRecognizer *)sender {
 	
     [self.view endEditing:YES];
@@ -49,10 +56,23 @@
     
         AssetsTableViewController *controller = (AssetsTableViewController *)[segue destinationViewController];
         controller.insurentory = self.insurentory;
+        controller.delegate = self;
+
 
     }
 
 }
+
+- (void)valueUpdated:(double)valueDelta{
+    
+    
+    self.insurentory.totalValue = [self.insurentory.totalValue decimalNumberByAdding:[NSDecimalNumber decimalNumberWithDecimal:[NSNumber numberWithDouble:valueDelta].decimalValue]];
+    self.insurentory.timeStamp = [NSDate date];
+    [InsurentoryViewController saveObjectContext];
+    
+}
+
+
 
 #pragma mark - Managing the detail item
 
@@ -105,15 +125,7 @@
 	
     self.insurentory.name = self.nameTextField.text;
     self.insurentory.notes = self.notesTextView.text;
-
     self.insurentory.locationDescription =  self.locationTextView.text;
-    
-    // TODO: Instead use new AssetDelegate protocol
-    NSDecimalNumber *assetsValue = [NSDecimalNumber zero];
-    for (Asset *asset in self.insurentory.assets) {
-        assetsValue = [assetsValue decimalNumberByAdding:asset.value];
-    }
-    self.insurentory.totalValue = assetsValue;
     
     [InsurentoryViewController saveObjectContext];
 }
