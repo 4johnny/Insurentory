@@ -333,7 +333,7 @@
 	
 	assetTableViewCell.assetImageView.image = asset.assetImage
 	? [UIImage imageWithData:asset.assetImage]
-	: [UIImage imageNamed:@"foosball_table"];
+	: [UIImage imageNamed:@"asset_placeholder"];
 	
 	assetTableViewCell.nameLabel.text = asset.name ? asset.name : @"<Name>";
 	

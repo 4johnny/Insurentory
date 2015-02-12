@@ -10,7 +10,7 @@
         <scene sceneID="VxE-TS-NSR">
             <objects>
                 <tableViewController storyboardIdentifier="Asset" title="Asset" id="I5D-lG-Wv4" customClass="AssetStaticTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="eWS-ld-RH8">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="eWS-ld-RH8">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -22,15 +22,15 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ElD-PI-2NR" id="vtt-aj-EY5">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="foosball_table" translatesAutoresizingMaskIntoConstraints="NO" id="Hkv-k6-Bsp">
-                                                    <rect key="frame" x="-1332" y="10" width="3264" height="212"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="asset_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="Hkv-k6-Bsp">
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="231.5"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="Hkv-k6-Bsp" secondAttribute="bottom" constant="10" id="MfW-GJ-9Et"/>
-                                                <constraint firstAttribute="centerX" secondItem="Hkv-k6-Bsp" secondAttribute="centerX" id="NXc-YE-cow"/>
-                                                <constraint firstAttribute="centerY" secondItem="Hkv-k6-Bsp" secondAttribute="centerY" id="hHq-id-uNX"/>
-                                                <constraint firstItem="Hkv-k6-Bsp" firstAttribute="top" secondItem="vtt-aj-EY5" secondAttribute="top" constant="10" id="mWI-ND-uan"/>
+                                                <constraint firstAttribute="bottom" secondItem="Hkv-k6-Bsp" secondAttribute="bottom" id="DMw-WN-4gb"/>
+                                                <constraint firstItem="Hkv-k6-Bsp" firstAttribute="top" secondItem="vtt-aj-EY5" secondAttribute="top" id="a9q-WA-xMV"/>
+                                                <constraint firstAttribute="trailing" secondItem="Hkv-k6-Bsp" secondAttribute="trailing" id="aLn-qg-acH"/>
+                                                <constraint firstItem="Hkv-k6-Bsp" firstAttribute="leading" secondItem="vtt-aj-EY5" secondAttribute="leading" id="umQ-Ra-Whq"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -39,10 +39,18 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qSt-NT-sXE" id="L7k-Xu-5jA">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="receipt1" translatesAutoresizingMaskIntoConstraints="NO" id="7fk-VY-bsp">
-                                                    <rect key="frame" x="8" y="11" width="100" height="100"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="receipt_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="7fk-VY-bsp">
+                                                    <rect key="frame" x="10" y="10" width="580" height="101"/>
                                                 </imageView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="7fk-VY-bsp" firstAttribute="top" secondItem="L7k-Xu-5jA" secondAttribute="top" constant="10" id="8cS-Cu-mjf"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="7fk-VY-bsp" secondAttribute="trailing" constant="10" id="Aje-1D-fgN"/>
+                                                <constraint firstAttribute="bottom" secondItem="7fk-VY-bsp" secondAttribute="bottom" constant="10" id="LAY-Vo-iYB"/>
+                                                <constraint firstAttribute="centerX" secondItem="7fk-VY-bsp" secondAttribute="centerX" id="NOb-yn-zF6"/>
+                                                <constraint firstAttribute="centerY" secondItem="7fk-VY-bsp" secondAttribute="centerY" id="ghY-jQ-YFH"/>
+                                                <constraint firstItem="7fk-VY-bsp" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="L7k-Xu-5jA" secondAttribute="leading" constant="10" id="r3P-y1-iNW"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="100" id="qJ4-33-lJF">
@@ -51,27 +59,27 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pbt-Xx-GR9">
-                                                    <rect key="frame" x="10" y="15" width="71" height="21"/>
+                                                    <rect key="frame" x="10" y="14.5" width="75" height="21.5"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="71" id="kI1-4p-2Pq"/>
+                                                        <constraint firstAttribute="width" constant="75" id="kI1-4p-2Pq"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Value ($):" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C3i-rJ-MdH">
-                                                    <rect key="frame" x="10" y="55" width="70" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <rect key="frame" x="10" y="54" width="75" height="21.5"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="&lt;Name&gt;" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iYM-Qn-AkN">
-                                                    <rect key="frame" x="91" y="10" width="499" height="30"/>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="&lt;Name&gt;" borderStyle="roundedRect" minimumFontSize="17" clearButtonMode="unlessEditing" translatesAutoresizingMaskIntoConstraints="NO" id="iYM-Qn-AkN">
+                                                    <rect key="frame" x="95" y="10" width="495" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="&lt;Value&gt;" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="edy-jZ-bOv">
-                                                    <rect key="frame" x="90" y="50" width="501" height="30"/>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="&lt;Value&gt;" borderStyle="roundedRect" minimumFontSize="17" clearButtonMode="unlessEditing" translatesAutoresizingMaskIntoConstraints="NO" id="edy-jZ-bOv">
+                                                    <rect key="frame" x="95" y="50" width="494.5" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                                 </textField>
@@ -154,7 +162,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="foosball_table" translatesAutoresizingMaskIntoConstraints="NO" id="hZO-nW-wJ0">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="asset_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="hZO-nW-wJ0">
                                             <rect key="frame" x="8" y="8" width="104" height="104"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="hZO-nW-wJ0" secondAttribute="height" multiplier="1:1" id="pDH-rN-p4B"/>
@@ -166,7 +174,7 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="&lt;Value&gt;" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aaH-Zq-Fbb">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;Value&gt;" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aaH-Zq-Fbb">
                                             <rect key="frame" x="122" y="70" width="447" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -227,7 +235,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="foosball_table" width="3264" height="2448"/>
-        <image name="receipt1" width="1275" height="1650"/>
+        <image name="asset_placeholder" width="1500" height="1500"/>
+        <image name="receipt_placeholder" width="512" height="512"/>
     </resources>
 </document>

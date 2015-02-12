@@ -62,8 +62,17 @@
 
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	
-	[self showImagePickerSourceSelector];
+
+	switch (indexPath.item) {
+			
+		case 0:
+		case 1:
+			[self showImagePickerSourceSelector];
+			break;
+			
+		default:
+			break;
+	}
 }
 
 
@@ -207,11 +216,11 @@
 	
 	self.assetImageView.image = self.asset.assetImage
 	? [UIImage imageWithData:self.asset.assetImage]
-	: [UIImage imageNamed:@"foosball_table"];
+	: [UIImage imageNamed:@"asset_placeholder"];
 	
 	self.receiptImageView.image = self.asset.receiptImage
 	? [UIImage imageWithData:self.asset.receiptImage]
-	: [UIImage imageNamed:@"receipt1"];
+	: [UIImage imageNamed:@"receipt_placeholder"];
 	
 	self.nameTextField.text = self.asset.name ? self.asset.name : @"<Name>";
 	
