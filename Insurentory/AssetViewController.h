@@ -9,8 +9,26 @@
 #import <UIKit/UIKit.h>
 #import "Asset.h"
 
+#
+# pragma mark - Protocol
+#
+
+@protocol AssetUpdateDelegate <NSObject>
+
+- (void)valueUpdated:(double)valueDelta;
+
+@end
+
+
 @interface AssetViewController : UIViewController
 
+@property (nonatomic) id <AssetUpdateDelegate> delegate;
+
 @property (nonatomic) Asset* asset;
+
+@property (weak, nonatomic) IBOutlet UIImageView *assetImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *receiptImageView;
+@property (weak, nonatomic) IBOutlet UITextField *nameTextField;
+@property (weak, nonatomic) IBOutlet UITextField *valueTextField;
 
 @end
