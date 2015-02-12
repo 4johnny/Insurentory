@@ -111,11 +111,7 @@
 
     self.locationTextView.layer.borderColor = [UIColor blackColor].CGColor;
     self.locationTextView.layer.borderWidth = 1.0;
-    if (self.insurentory.locationDescription != nil) {
-        
-        self.locationTextView.text = self.insurentory.locationDescription;
-        self.locationTextView.editable = NO;
-    }
+    self.locationTextView.text = self.insurentory.locationDescription;
 }
 
 

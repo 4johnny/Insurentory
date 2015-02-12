@@ -281,6 +281,7 @@
 - (void)valueUpdated:(double)valueDelta {
 
 	[self.delegate valueUpdated:valueDelta];
+    self.fetchedResultsController = nil;
 }
 
 

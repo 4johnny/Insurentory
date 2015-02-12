@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "AssetViewController.h"
+#import "AssetStaticTableViewController.h"
 
 @class Insurentory;
 
