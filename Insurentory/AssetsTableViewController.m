@@ -118,6 +118,7 @@
 		NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
 		AssetViewController* assetViewController = segue.destinationViewController;
 		assetViewController.asset = [self.fetchedResultsController objectAtIndexPath:indexPath];
+		assetViewController.delegate = self;
 	}
 }
 
@@ -162,7 +163,9 @@
 	if (editingStyle == UITableViewCellEditingStyleDelete) {
 		
 		NSManagedObjectContext *context = self.fetchedResultsController.managedObjectContext;
-		[context deleteObject:[self.fetchedResultsController objectAtIndexPath:indexPath]];
+		Asset* asset = [self.fetchedResultsController objectAtIndexPath:indexPath];
+		double valueDelta = asset.value.doubleValue;
+		[context deleteObject:asset];
 		
 		NSError *error = nil;
 		if (![context save:&error]) {
@@ -172,6 +175,8 @@
 			NSLog(@"Unresolved error %@, %@", error, error.userInfo);
 			abort();
 		}
+		
+		[self.delegate valueUpdated:(-valueDelta)];
 	}
 }
 
@@ -254,6 +259,17 @@
  [self.tableView reloadData];
  }
  */
+
+
+#
+# pragma mark <AssetUpdateDelegate>
+#
+
+
+- (void)valueUpdated:(double)valueDelta {
+
+	[self.delegate valueUpdated:valueDelta];
+}
 
 
 #

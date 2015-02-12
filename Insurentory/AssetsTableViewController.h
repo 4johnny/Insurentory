@@ -8,16 +8,19 @@
 
 #import <UIKit/UIKit.h>
 #import "Insurentory.h"
+#import "AssetViewController.h"
 
 #
 # pragma mark - Interface
 #
 
-@interface AssetsTableViewController : UITableViewController <NSFetchedResultsControllerDelegate>
+@interface AssetsTableViewController : UITableViewController <NSFetchedResultsControllerDelegate, AssetUpdateDelegate>
 
 #
 # pragma mark Properties
 #
+
+@property (nonatomic) id <AssetUpdateDelegate> delegate;
 
 @property (nonatomic) Insurentory* insurentory;
 
