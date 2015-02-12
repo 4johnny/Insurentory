@@ -22,6 +22,7 @@
 
 - (IBAction)saveInventoryButtonPressed:(id)sender;
 
+- (IBAction)emailButtonPressed:(UIButton *)sender;
 
 @end
 

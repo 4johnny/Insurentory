@@ -122,4 +122,21 @@
     [appDelegate saveContext];
 }
 
+
+
+- (IBAction)emailButtonPressed:(UIButton *)sender {
+    
+//    NSMutableArray *csvArray = [NSMutableArray array];
+//    for (Asset *asset in self.insurentory.assets) {
+//        [csvArray addObject:[NSString stringWithFormat:@"%@, %@ ", asset.name, asset.value]];
+//    }
+//    
+//    NSString *csv = [csvArray componentsJoinedByString:@" \n"];
+//    NSLog(@"csv: %@", csv);
+
+}
+
+
+
+
 @end
