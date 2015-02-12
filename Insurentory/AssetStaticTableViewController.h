@@ -19,12 +19,22 @@
 
 @end
 
+#
+# pragma mark - Interface
+#
 
-@interface AssetStaticTableViewController : UITableViewController
+@interface AssetStaticTableViewController : UITableViewController <UINavigationControllerDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate>
+
+#
+# pragma mark Properties
+#
 
 @property (nonatomic) id <AssetUpdateDelegate> delegate;
-
 @property (nonatomic) Asset* asset;
+
+#
+# pragma mark Outlets
+#
 
 @property (weak, nonatomic) IBOutlet UIImageView *assetImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *receiptImageView;

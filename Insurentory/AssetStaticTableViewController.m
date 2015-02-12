@@ -56,6 +56,84 @@
 */
 
 
+#
+# pragma mark <UITableViewDelegate>
+#
+
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	
+	[self showImagePickerSourceSelector];
+}
+
+
+#
+# pragma mark <UIActionSheetDelegate>
+#
+
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+	
+	switch (buttonIndex) {
+			
+		case 0:
+			[self showCameraImagePicker];
+			break;
+			
+		case 1:
+			[self showPhotoLibraryImagePicker];
+			break;
+			
+		default:
+			break;
+	}
+}
+
+
+#
+# pragma mark <UIImagePickerControllerDelegate>
+#
+
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+	
+	UIImage *originalImage = [info objectForKey:UIImagePickerControllerOriginalImage];
+	// CGRect cropRect = [[info objectForKey:UIImagePickerControllerCropRect]CGRectValue];
+
+	UIImage *selectedImage = [info objectForKey:UIImagePickerControllerEditedImage];
+	if(!selectedImage) {
+		selectedImage = originalImage;
+	}
+	
+	// Save original image to photo album
+	if ([picker sourceType] == UIImagePickerControllerSourceTypeCamera) {
+		UIImageWriteToSavedPhotosAlbum(originalImage, nil, nil, nil);
+	}
+
+	// Put selected image into view
+	switch ([self.tableView indexPathForSelectedRow].item) {
+			
+		case 0:
+			self.assetImageView.image = selectedImage;
+			break;
+			
+		case 1:
+			self.receiptImageView.image = selectedImage;
+			break;
+			
+		default:
+			break;
+	}
+	
+	[picker dismissViewControllerAnimated:YES completion:NULL];
+}
+
+
+#
+# pragma mark Action Handlers
+#
+
+
 - (IBAction)saveAssetPressed:(UIBarButtonItem *)sender {
 	
 	[self.view endEditing:YES];
@@ -75,6 +153,53 @@
 	
 	double valueDelta = self.asset.value.doubleValue - oldValue;
 	[self.delegate valueUpdated:valueDelta];
+}
+
+
+#
+# pragma mark Helpers
+#
+
+
+- (void)showImagePickerSourceSelector {
+	
+	if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+		
+		[self showImageSourceActionSheet];
+		
+	} else {
+		
+		// NOTE: Most iOS devices have cameras.  But still helps for simulator.
+		[self showPhotoLibraryImagePicker];
+	}
+}
+
+
+- (void)showImageSourceActionSheet {
+
+	UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Image Source" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Camera", @"Photo Library", nil];
+	actionSheet.tag = 0;
+	[actionSheet showInView:self.view];
+}
+
+
+- (void)showCameraImagePicker {
+	
+	UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+	imagePicker.delegate = self;
+	imagePicker.allowsEditing = true;
+	[imagePicker setSourceType:UIImagePickerControllerSourceTypeCamera];
+	[self presentViewController:imagePicker animated:true completion:nil];
+}
+
+
+- (void)showPhotoLibraryImagePicker {
+	
+	UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+	imagePicker.delegate = self;
+	imagePicker.allowsEditing = YES;
+	[imagePicker setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
+	[self presentViewController:imagePicker animated:YES completion:nil];
 }
 
 
