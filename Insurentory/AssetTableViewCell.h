@@ -18,6 +18,8 @@
 # pragma mark Outlets
 #
 
-
+@property (weak, nonatomic) IBOutlet UIImageView *assetImageView;
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *valueLabel;
 
 @end
