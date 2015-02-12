@@ -251,7 +251,7 @@
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
 	
 	[self.tableView endUpdates];
-	
+
 	if (self.needsShowAssetSeque) {
 		self.needsShowAssetSeque = NO;
 
@@ -259,6 +259,8 @@
 		[self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0] animated:YES scrollPosition:UITableViewScrollPositionNone];
 		[self performSegueWithIdentifier:@"showAsset" sender:self];
 	}
+	
+	self.fetchedResultsController = nil;
 }
 
 
@@ -281,7 +283,6 @@
 - (void)valueUpdated:(double)valueDelta {
 
 	[self.delegate valueUpdated:valueDelta];
-    self.fetchedResultsController = nil;
 }
 
 
