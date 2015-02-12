@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "InsurentoryViewController.h"
+#import "InsurentoryStaticTableViewController.h"
 #import "InsurentoriesTableViewController.h"
 
 @interface AppDelegate () <UISplitViewControllerDelegate, CLLocationManagerDelegate>
@@ -65,7 +65,7 @@
 #pragma mark - Split view
 
 - (BOOL)splitViewController:(UISplitViewController *)splitViewController collapseSecondaryViewController:(UIViewController *)secondaryViewController ontoPrimaryViewController:(UIViewController *)primaryViewController {
-    if ([secondaryViewController isKindOfClass:[UINavigationController class]] && [[(UINavigationController *)secondaryViewController topViewController] isKindOfClass:[InsurentoryViewController class]] && ([(InsurentoryViewController *)[(UINavigationController *)secondaryViewController topViewController] insurentory] == nil)) {
+    if ([secondaryViewController isKindOfClass:[UINavigationController class]] && [[(UINavigationController *)secondaryViewController topViewController] isKindOfClass:[InsurentoryStaticTableViewController class]] && ([(InsurentoryStaticTableViewController *)[(UINavigationController *)secondaryViewController topViewController] insurentory] == nil)) {
         // Return YES to indicate that we have handled the collapse by doing nothing; the secondary controller will be discarded.
         return YES;
     } else {
