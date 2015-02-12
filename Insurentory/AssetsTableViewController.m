@@ -1,5 +1,5 @@
 //
-//  AssetsViewController.m
+//  AssetsTableViewController.m
 //  Insurentory
 //
 //  Created by JoLi on 2015-02-10.
@@ -7,7 +7,7 @@
 //
 
 #import "AssetsTableViewController.h"
-#import "AssetViewController.h"
+#import "AssetStaticTableViewController.h"
 #import "AssetTableViewCell.h"
 
 
@@ -120,7 +120,7 @@
 		
 		// Inject asset model into asset view controller
 		NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-		AssetViewController* assetViewController = segue.destinationViewController;
+		AssetStaticTableViewController* assetViewController = segue.destinationViewController;
 		assetViewController.asset = [self.fetchedResultsController objectAtIndexPath:indexPath];
 		assetViewController.delegate = self;
 	}

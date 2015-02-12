@@ -1,12 +1,12 @@
 //
-//  AssetViewController.m
+//  AssetStaticTableViewController.m
 //  Insurentory
 //
 //  Created by JoLi on 2015-02-10.
 //  Copyright (c) 2015 Empath Solutions. All rights reserved.
 //
 
-#import "AssetViewController.h"
+#import "AssetStaticTableViewController.h"
 #import "AppDelegate.h"
 
 
@@ -15,7 +15,7 @@
 #
 
 
-@interface AssetViewController ()
+@interface AssetStaticTableViewController ()
 
 @end
 
@@ -25,7 +25,7 @@
 #
 
 
-@implementation AssetViewController
+@implementation AssetStaticTableViewController
 
 
 #
@@ -71,7 +71,7 @@
 	double oldValue = self.asset.value.doubleValue;
 	self.asset.value = [NSDecimalNumber decimalNumberWithDecimal:[decimalFormatter numberFromString:self.valueTextField.text].decimalValue];
 	
-	[AssetViewController saveObjectContext];
+	[AssetStaticTableViewController saveObjectContext];
 	
 	double valueDelta = self.asset.value.doubleValue - oldValue;
 	[self.delegate valueUpdated:valueDelta];

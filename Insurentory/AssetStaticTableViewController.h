@@ -1,5 +1,5 @@
 //
-//  AssetViewController.h
+//  AssetStaticTableViewController.h
 //  Insurentory
 //
 //  Created by JoLi on 2015-02-10.
@@ -20,7 +20,7 @@
 @end
 
 
-@interface AssetViewController : UIViewController
+@interface AssetStaticTableViewController : UITableViewController
 
 @property (nonatomic) id <AssetUpdateDelegate> delegate;
 
