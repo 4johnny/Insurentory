@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>4FAE3353-748D-4C99-8345-F71CFFCF855C</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Insurentory</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>17A345E38F44E171CC1981F06FE78E2D1199C0C5</key>
+		<string>github.com:4johnny/Insurentory.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Insurentory.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>17A345E38F44E171CC1981F06FE78E2D1199C0C5</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>github.com:4johnny/Insurentory.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>17A345E38F44E171CC1981F06FE78E2D1199C0C5</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>17A345E38F44E171CC1981F06FE78E2D1199C0C5</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Insurentory</string>
+		</dict>
+	</array>
+</dict>
+</plist>

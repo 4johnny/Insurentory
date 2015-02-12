@@ -11,8 +11,11 @@
 #import "Insurentory.h"
 #import "Asset.h"
 #import "AssetsTableViewController.h"
+#import <CHCSVParser.h>
+#import <MessageUI/MessageUI.h>
 
-@interface InsurentoryViewController ()
+
+@interface InsurentoryViewController () <MFMailComposeViewControllerDelegate>
 
 @end
 
@@ -43,8 +46,7 @@
 {
 
     if ([[segue identifier] isEqualToString:@"Assets"]) {
-        
-
+    
         AssetsTableViewController *controller = (AssetsTableViewController *)[segue destinationViewController];
         controller.insurentory = self.insurentory;
 
@@ -117,25 +119,65 @@
 }
 
 
+- (IBAction)emailButtonPressed:(UIButton *)sender {
+    
+    if ( [MFMailComposeViewController canSendMail] )
+    {
+        MFMailComposeViewController *mailComposer = [[MFMailComposeViewController alloc] init];
+        mailComposer.mailComposeDelegate = self;
+        
+        [mailComposer setMessageBody:@"Hi,\nHere is my house contents. Could you please give me a quote for insurance?\n Thank you!" isHTML:NO];
+        
+        [mailComposer setSubject:[NSString stringWithFormat:@"Insurentory: %@", self.insurentory.name]];
+
+        [mailComposer addAttachmentData:[self generateCsvFromInsurentoryData]  mimeType:@"cvs" fileName:[NSString stringWithFormat:@"Insurentory %@.csv", self.insurentory.name]];
+        
+        [self presentViewController:mailComposer animated:YES completion:nil];
+    }
+    
+}
+
+
+#pragma mark -  Helper methods
+
+- (NSData *)generateCsvFromInsurentoryData
+{
+    NSOutputStream *outputStream = [[NSOutputStream alloc] initToMemory];
+    CHCSVWriter *csvWriter = [[CHCSVWriter alloc] initWithOutputStream:outputStream encoding:NSUTF8StringEncoding delimiter:','];
+    
+    [csvWriter writeLineOfFields:@[self.insurentory.name, self.insurentory.timeStamp, self.insurentory.totalValue]];
+    [csvWriter writeLineOfFields:@[ @"Asset Name", @"Asset Value"]];
+    //[csvWriter finishLine];
+    
+        for (Asset *asset in self.insurentory.assets) {
+            //[csvWriter writeLineOfFields: @[asset.name, asset.value]];
+            [csvWriter writeField:asset.name];
+            [csvWriter writeField:asset.value];
+            [csvWriter finishLine];
+        }
+    
+    [csvWriter closeStream];
+    
+
+    NSData *bufferOutput = [outputStream propertyForKey:NSStreamDataWrittenToMemoryStreamKey];
+    return bufferOutput;
+
+}
+
+
 + (void)saveObjectContext {
     AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     [appDelegate saveContext];
 }
 
 
+#pragma mark - MFMailCompose ViewController Delegate
 
-- (IBAction)emailButtonPressed:(UIButton *)sender {
-    
-//    NSMutableArray *csvArray = [NSMutableArray array];
-//    for (Asset *asset in self.insurentory.assets) {
-//        [csvArray addObject:[NSString stringWithFormat:@"%@, %@ ", asset.name, asset.value]];
-//    }
-//    
-//    NSString *csv = [csvArray componentsJoinedByString:@" \n"];
-//    NSLog(@"csv: %@", csv);
-
+- (void)mailComposeController:(MFMailComposeViewController *)controller
+          didFinishWithResult:(MFMailComposeResult)result
+                        error:(NSError *)error {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
-
 
 
 
