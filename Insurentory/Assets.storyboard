@@ -18,26 +18,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Detail view content goes here" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Aes-qc-XEr">
-                                <rect key="frame" x="20" y="260" width="560" height="17"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" size="system"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hkv-k6-Bsp">
+                                <rect key="frame" x="175" y="20" width="250" height="249"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="Aes-qc-XEr" firstAttribute="centerY" secondItem="gan-bT-Kau" secondAttribute="centerY" id="Ype-BP-vA1"/>
-                            <constraint firstAttribute="trailing" secondItem="Aes-qc-XEr" secondAttribute="trailing" constant="20" symbolic="YES" id="fpb-SM-wx2"/>
-                            <constraint firstItem="Aes-qc-XEr" firstAttribute="leading" secondItem="gan-bT-Kau" secondAttribute="leading" constant="20" symbolic="YES" id="pMn-va-JEf"/>
-                        </constraints>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Asset" id="u9j-Vs-BNT"/>
-                    <connections>
-                        <outlet property="detailDescriptionLabel" destination="Aes-qc-XEr" id="qNq-tA-rGT"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v11-27-x2B" sceneMemberID="firstResponder"/>
             </objects>
@@ -101,6 +89,12 @@
                                     </variation>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="assetImageView" destination="hZO-nW-wJ0" id="Tky-iR-nZA"/>
+                                    <outlet property="nameLabel" destination="7NP-Kw-ToH" id="RRy-gd-s6V"/>
+                                    <outlet property="valueLabel" destination="aaH-Zq-Fbb" id="Ww3-GX-9O1"/>
+                                    <segue destination="dOo-IJ-kZL" kind="show" identifier="showAsset" id="PFN-mJ-g6Y"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <sections/>
@@ -113,8 +107,7 @@
                     <navigationItem key="navigationItem" title="Assets" id="kbh-4d-fUD">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="DyF-vc-eSF">
                             <connections>
-                                <action selector="addPressed:" destination="aj0-rT-fnW" id="3fm-cs-OJ1"/>
-                                <segue destination="dOo-IJ-kZL" kind="show" identifier="showAsset" id="bmp-kc-klE"/>
+                                <action selector="addPressed:" destination="aj0-rT-fnW" id="Jnf-EZ-WMH"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

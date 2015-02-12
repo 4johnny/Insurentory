@@ -8,6 +8,7 @@
 
 #import "AssetsTableViewController.h"
 #import "AssetViewController.h"
+#import "AssetTableViewCell.h"
 
 
 #
@@ -41,7 +42,7 @@
 	NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] initWithEntityName:@"Asset"];
 	fetchRequest.fetchBatchSize = 20;
 	fetchRequest.sortDescriptors = @[[[NSSortDescriptor alloc] initWithKey:@"timeStamp" ascending:YES]];
-	fetchRequest.predicate = [NSPredicate predicateWithFormat:@"insurentory.timeStamp == %@", [NSDate date]]; // self.insurentory.timeStamp];
+	fetchRequest.predicate = [NSPredicate predicateWithFormat:@"insurentory.timeStamp == %@", self.insurentory.timeStamp];
 	
 	// Edit the section name key path and cache name if appropriate.
 	// nil for section name key path means "no sections".
@@ -49,7 +50,7 @@
 	_fetchedResultsController.delegate = self;
 	
 	NSError *error = nil;
-	if (![self.fetchedResultsController performFetch:&error]) {
+	if (![_fetchedResultsController performFetch:&error]) {
 		
 		// Replace this implementation with code to handle the error appropriately.
 		// abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
@@ -94,8 +95,8 @@
 	// Do any additional setup after loading the view, typically from a nib.
 	//self.navigationItem.leftBarButtonItem = self.editButtonItem;
 	
-//	UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
-//	self.navigationItem.rightBarButtonItem = addButton;
+	//	UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
+	//	self.navigationItem.rightBarButtonItem = addButton;
 }
 
 
@@ -111,11 +112,11 @@
 	// Get the new view controller using [segue destinationViewController].
 	// Pass the selected object to the new view controller.
 
-	if ([[segue identifier] isEqualToString:@"showAsset"]) {
+	if ([segue.identifier isEqualToString:@"showAsset"]) {
 		
 		// Inject asset model into asset view controller
 		NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-		AssetViewController* assetViewController = [segue destinationViewController];
+		AssetViewController* assetViewController = segue.destinationViewController;
 		assetViewController.asset = [self.fetchedResultsController objectAtIndexPath:indexPath];
 	}
 }
@@ -128,15 +129,15 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 	
-	return self.fetchedResultsController.sections.count;
+	return 1; //self.fetchedResultsController.sections.count;
 }
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	
-	id <NSFetchedResultsSectionInfo> sectionInfo = self.fetchedResultsController.sections[section];
+//	id <NSFetchedResultsSectionInfo> sectionInfo = self.fetchedResultsController.sections[section];
 	
-	return sectionInfo.numberOfObjects;
+	return self.fetchedResultsController.fetchedObjects.count; // sectionInfo.numberOfObjects;
 }
 
 
@@ -275,18 +276,20 @@
 	
 	NSManagedObjectContext *context = self.fetchedResultsController.managedObjectContext;
 	NSEntityDescription *entity = self.fetchedResultsController.fetchRequest.entity;
+	
 	Asset* newAsset = [NSEntityDescription insertNewObjectForEntityForName:entity.name inManagedObjectContext:context];
 	
 	newAsset.timeStamp = [NSDate date];
+	newAsset.insurentory = self.insurentory;
 	NSLog(@"Created new Asset entity: %@", newAsset);
-	
+
 	// Save the context
 	NSError *error = nil;
 	if (![context save:&error]) {
 		
 		// Replace this implementation with code to handle the error appropriately.
 		// abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-		NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+		NSLog(@"Unresolved error %@, %@", error, error.userInfo);
 		abort();
 	}
 }
@@ -295,12 +298,17 @@
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
 	
 	Asset* asset = [self.fetchedResultsController objectAtIndexPath:indexPath];
+	AssetTableViewCell* assetTableViewCell = (AssetTableViewCell*)cell;
 	
-	//	cell.textLabel.text = asset.name;
-	//
-	//	NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
-	//	[dateFormatter setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
-	//	cell.detailTextLabel.text = [dateFormatter stringFromDate:insurentory.timeStamp];
+	assetTableViewCell.assetImageView.image = asset.assetImage
+	? [UIImage imageWithData:asset.assetImage]
+	: [UIImage imageNamed:@"foosball_table"];
+	
+	assetTableViewCell.nameLabel.text = asset.name ? asset.name : @"<Name>";
+	
+	NSNumberFormatter *currencyFormatter = [[NSNumberFormatter alloc] init];
+	currencyFormatter.numberStyle = NSNumberFormatterCurrencyStyle;
+	assetTableViewCell.valueLabel.text = [currencyFormatter stringFromNumber:asset.value];
 }
 
 
