@@ -11,6 +11,7 @@
 #import "InsurentoryStaticTableViewController.h"
 #import "Insurentory.h"
 #import "AppDelegate.h"
+#import "ChameleonFramework/Chameleon.h"
 
 
 @interface InsurentoriesTableViewController ()
@@ -23,6 +24,24 @@
 
 @implementation InsurentoriesTableViewController
 
+
+
+- (void)setupColors
+{
+    self.navigationController.navigationBar.barTintColor = FlatSkyBlue;
+    self.navigationController.navigationBar.tintColor = FlatWhite;
+    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: FlatWhite };
+    self.navigationController.navigationBar.translucent = NO;
+    
+    self.tableView.separatorColor = FlatSkyBlue;
+}
+
+
+
+
+
+
+
 - (void)awakeFromNib {
 	[super awakeFromNib];
 	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
@@ -33,12 +52,14 @@
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
-	
+    
 	// Authenticate user via Touch ID
 	[self authenticateUser];
 	
+    [self setupColors];
+	
 	// Do any additional setup after loading the view, typically from a nib.
-	self.navigationItem.leftBarButtonItem = self.editButtonItem;
+	//self.navigationItem.leftBarButtonItem = self.editButtonItem;
 
 	UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
 	self.navigationItem.rightBarButtonItem = addButton;
@@ -159,9 +180,11 @@
     
     Insurentory *insurentory = [self.fetchedResultsController objectAtIndexPath:indexPath];
     cell.textLabel.text = insurentory.name;
+    cell.textLabel.font = [UIFont boldSystemFontOfSize:18];
     
     NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
+    cell.detailTextLabel.font = [UIFont systemFontOfSize:14];
     cell.detailTextLabel.text = [dateFormatter stringFromDate:insurentory.timeStamp];
 }
 

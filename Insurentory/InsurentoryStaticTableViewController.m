@@ -13,7 +13,7 @@
 #import "AssetsTableViewController.h"
 #import <CHCSVParser.h>
 #import <MessageUI/MessageUI.h>
-
+#import "ChameleonFramework/Chameleon.h"
 
 @interface InsurentoryStaticTableViewController () <MFMailComposeViewControllerDelegate>
 
@@ -22,13 +22,17 @@
 @implementation InsurentoryStaticTableViewController
 
 
+
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
-    
-    
     UITapGestureRecognizer *backgroundTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handlebackgroundTap:)];
     [self.view addGestureRecognizer:backgroundTap];
+    
+    self.tableView.separatorColor = FlatSkyBlue;
+
 }
 
 
@@ -98,8 +102,10 @@
 	if (self.insurentory.notes) {
 		self.notesTextView.text = self.insurentory.notes;
 	}
-    self.notesTextView.layer.borderColor = [UIColor blackColor].CGColor;
-    self.notesTextView.layer.borderWidth = 1.0;
+    self.notesTextView.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    self.notesTextView.layer.borderWidth = 0.3;
+    self.notesTextView.layer.cornerRadius = 5;
+    self.notesTextView.clipsToBounds = YES;
     
     NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
@@ -109,8 +115,10 @@
     currencyFormatter.numberStyle = NSNumberFormatterCurrencyStyle;
     self.totalValueLabel.text = [currencyFormatter stringFromNumber:self.insurentory.totalValue];
 
-    self.locationTextView.layer.borderColor = [UIColor blackColor].CGColor;
-    self.locationTextView.layer.borderWidth = 1.0;
+    self.locationTextView.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    self.locationTextView.layer.borderWidth = 0.3;
+    self.locationTextView.layer.cornerRadius = 5;
+    self.locationTextView.clipsToBounds = YES;
     self.locationTextView.text = self.insurentory.locationDescription;
 }
 
