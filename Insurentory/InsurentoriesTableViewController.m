@@ -6,21 +6,20 @@
 //  Copyright (c) 2015 Empath Solutions. All rights reserved.
 //
 
+#import <LocalAuthentication/LocalAuthentication.h>
 #import "InsurentoriesTableViewController.h"
 #import "InsurentoryStaticTableViewController.h"
 #import "Insurentory.h"
 #import "AppDelegate.h"
 #import "ChameleonFramework/Chameleon.h"
 
+
 @interface InsurentoriesTableViewController ()
 
 @property (nonatomic) CLLocation *insurentoryLocation;
 @property (nonatomic) NSString *insurentoryAddress;
 
-
 @end
-
-
 
 
 @implementation InsurentoriesTableViewController
@@ -56,6 +55,9 @@
     
     [self setupColors];
 	
+	// Authenticate user via Touch ID
+	[self authenticateUser];
+	
 	// Do any additional setup after loading the view, typically from a nib.
 	//self.navigationItem.leftBarButtonItem = self.editButtonItem;
 
@@ -69,12 +71,11 @@
 }
 
 
-
-
 - (void)didReceiveMemoryWarning {
 	[super didReceiveMemoryWarning];
 	// Dispose of any resources that can be recreated.
 }
+
 
 - (void)insertNewObject:(id)sender {
 	NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
@@ -214,8 +215,6 @@
 }
 
 
-
-
 #pragma mark - Fetched results controller
 
 - (NSFetchedResultsController *)fetchedResultsController
@@ -327,6 +326,62 @@
     [self.tableView reloadData];
 }
  */
+
+
+#
+# pragma mark Helpers
+#
+
+
+- (void)authenticateUser {
+
+	// Set up reusable alert controller
+	UIAlertAction* okAlertAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+	UIAlertController* alertController = [UIAlertController alertControllerWithTitle:@"Error" message:nil preferredStyle:UIAlertControllerStyleAlert];
+	
+	// If cannot auth with Touch ID, we are done.
+	LAContext *authContext = [[LAContext alloc] init];
+	NSError *error = nil;
+	if (![authContext canEvaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics error:&error]) {
+		
+		alertController.message = @"Your device cannot authenticate using TouchID.";
+		[alertController addAction:okAlertAction];
+		[self presentViewController:alertController animated:YES completion:nil];
+		
+		[self enableAppView]; // NOTE: For simulator and pre-iPhone5s demo purposes, we just approve
+		return;
+	}
+	
+	[authContext evaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics localizedReason:@"Please authenticate" reply:^(BOOL success, NSError *error) {
+		
+		// If authentication error, we are done.
+		if (error) {
+			
+			alertController.message = @"There was a problem verifying your identity.";
+			[alertController addAction:okAlertAction];
+			[self presentViewController:alertController animated:YES completion:nil];
+			return;
+		}
+		
+		// If authentication failed, we are done.
+		if (!success) {
+
+			alertController.message = @"You are not the device owner.";
+			[alertController addAction:okAlertAction];
+			[self presentViewController:alertController animated:YES completion:nil];
+			return;
+		}
+		dispatch_async(dispatch_get_main_queue(), ^{
+			[self enableAppView];
+		});
+	}];
+}
+
+
+- (void)enableAppView {
+	
+	self.navigationController.view.userInteractionEnabled = YES;
+}
 
 
 @end
