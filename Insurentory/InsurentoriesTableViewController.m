@@ -53,10 +53,10 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
     
-    [self setupColors];
-	
 	// Authenticate user via Touch ID
 	[self authenticateUser];
+	
+    [self setupColors];
 	
 	// Do any additional setup after loading the view, typically from a nib.
 	//self.navigationItem.leftBarButtonItem = self.editButtonItem;
