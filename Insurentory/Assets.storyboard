@@ -39,8 +39,8 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qSt-NT-sXE" id="L7k-Xu-5jA">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="receipt_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="7fk-VY-bsp">
-                                                    <rect key="frame" x="10" y="10" width="580" height="101"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="receipt_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="7fk-VY-bsp">
+                                                    <rect key="frame" x="44" y="10" width="512" height="101"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
