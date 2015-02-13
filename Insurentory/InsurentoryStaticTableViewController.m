@@ -124,6 +124,7 @@
     self.insurentory.locationDescription =  self.locationTextView.text;
     
     [InsurentoryStaticTableViewController saveObjectContext];
+	[self.navigationController popViewControllerAnimated:YES];
 }
 
 

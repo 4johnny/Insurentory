@@ -162,6 +162,7 @@
 	
 	double valueDelta = self.asset.value.doubleValue - oldValue;
 	[self.delegate valueUpdated:valueDelta];
+	[self.navigationController popViewControllerAnimated:YES];
 }
 
 
