@@ -39,7 +39,7 @@
                                         <action selector="emailButtonPressed:" destination="XLt-v4-I34" id="xOq-rK-qUm"/>
                                     </connections>
                                 </barButtonItem>
-                                <barButtonItem systemItem="save" id="a4u-VD-pd2">
+                                <barButtonItem image="save45" id="a4u-VD-pd2">
                                     <connections>
                                         <action selector="saveButtonPressed:" destination="XLt-v4-I34" id="Iia-Pm-lrH"/>
                                     </connections>
@@ -332,4 +332,7 @@
             <point key="canvasLocation" x="709" y="-630"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="save45" width="45" height="45"/>
+    </resources>
 </document>

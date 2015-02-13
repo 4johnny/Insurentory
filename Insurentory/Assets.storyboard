@@ -14,11 +14,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="492"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <toolbar key="tableFooterView" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="f2s-Zs-p1c">
+                        <toolbar key="tableFooterView" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translucent="NO" id="f2s-Zs-p1c">
                             <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                             <items>
-                                <barButtonItem systemItem="save" id="Y2v-tE-oA5">
+                                <barButtonItem image="save45" id="Y2v-tE-oA5">
                                     <connections>
                                         <action selector="saveAssetPressed:" destination="I5D-lG-Wv4" id="deE-R4-4ab"/>
                                     </connections>
@@ -248,5 +248,6 @@
     <resources>
         <image name="asset_placeholder" width="1500" height="1500"/>
         <image name="receipt_placeholder" width="512" height="512"/>
+        <image name="save45" width="45" height="45"/>
     </resources>
 </document>
