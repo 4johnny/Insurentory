@@ -208,7 +208,38 @@
 
 - (IBAction)airdropButtonPressed:(UIBarButtonItem *)sender {
 	
+	// Write insurentory data to CSV file in user app temp dir
+	NSString* fileName = [NSString stringWithFormat:@"Insurentory %@.csv", self.insurentory.name];
+	NSURL* fileURL = [NSURL fileURLWithPath:[NSTemporaryDirectory() stringByAppendingPathComponent:fileName]];
+	NSData* csvData = [self generateCsvFromInsurentoryData];
+	if(![csvData writeToURL:fileURL atomically:YES]) {
+		
+		NSLog(@"Error on write csv to temp dir");
+		return;
+	}
 	
+	// Airdrop file from user app temp dir
+	NSArray* objectsToShare = @[fileURL];
+	UIActivityViewController* controller = [[UIActivityViewController alloc] initWithActivityItems:objectsToShare applicationActivities:nil];
+	
+	// Exclude all activities except AirDrop
+	controller.excludedActivityTypes =
+	@[UIActivityTypePostToTwitter,
+	  UIActivityTypePostToFacebook,
+	  UIActivityTypePostToWeibo,
+	  UIActivityTypeMessage,
+	  UIActivityTypeMail,
+	  UIActivityTypePrint,
+	  UIActivityTypeCopyToPasteboard,
+	  UIActivityTypeAssignToContact,
+	  UIActivityTypeSaveToCameraRoll,
+	  UIActivityTypeAddToReadingList,
+	  UIActivityTypePostToFlickr,
+	  UIActivityTypePostToVimeo,
+	  UIActivityTypePostToTencentWeibo];
+	
+	// Present activities controller
+	[self presentViewController:controller animated:YES completion:nil];
 }
 
 
