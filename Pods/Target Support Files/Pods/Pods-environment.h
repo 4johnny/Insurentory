@@ -12,6 +12,12 @@
 #define COCOAPODS_VERSION_MINOR_CHCSVParser 1
 #define COCOAPODS_VERSION_PATCH_CHCSVParser 0
 
+// ChameleonFramework
+#define COCOAPODS_POD_AVAILABLE_ChameleonFramework
+#define COCOAPODS_VERSION_MAJOR_ChameleonFramework 1
+#define COCOAPODS_VERSION_MINOR_ChameleonFramework 1
+#define COCOAPODS_VERSION_PATCH_ChameleonFramework 2
+
 // SWTableViewCell
 #define COCOAPODS_POD_AVAILABLE_SWTableViewCell
 #define COCOAPODS_VERSION_MAJOR_SWTableViewCell 0

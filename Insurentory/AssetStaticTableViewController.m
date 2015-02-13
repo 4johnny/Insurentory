@@ -8,6 +8,7 @@
 
 #import "AssetStaticTableViewController.h"
 #import "AppDelegate.h"
+#import "ChameleonFramework/Chameleon.h"
 
 
 #
@@ -229,6 +230,9 @@
 	decimalFormatter.minimumFractionDigits = 2;
 	decimalFormatter.maximumFractionDigits = 2;
 	self.valueTextField.text = [decimalFormatter stringFromNumber:self.asset.value];
+    
+    self.tableView.separatorColor = FlatSkyBlue;
+
 }
 
 
