@@ -9,6 +9,7 @@
 #import "AssetsTableViewController.h"
 #import "AssetStaticTableViewController.h"
 #import "AssetTableViewCell.h"
+#import "ChameleonFramework/Chameleon.h"
 
 
 #
@@ -87,6 +88,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.tableView.separatorColor = FlatSkyBlue;
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -336,6 +339,8 @@
 	: [UIImage imageNamed:@"asset_placeholder"];
 	
 	assetTableViewCell.nameLabel.text = asset.name ? asset.name : @"<Name>";
+    
+    assetTableViewCell.nameLabel.font = [UIFont boldSystemFontOfSize:18];
 	
 	NSNumberFormatter *currencyFormatter = [[NSNumberFormatter alloc] init];
 	currencyFormatter.numberStyle = NSNumberFormatterCurrencyStyle;
