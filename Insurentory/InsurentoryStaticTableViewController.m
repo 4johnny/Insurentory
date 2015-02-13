@@ -177,11 +177,18 @@
 	UIAlertController* alertController = [UIAlertController alertControllerWithTitle:@"Error" message:nil preferredStyle:UIAlertControllerStyleAlert];
 	[alertController addAction:okAlertAction];
 	
+	// Create reminder
 	EKReminder* reminder = [EKReminder reminderWithEventStore:self.eventStore];
 	reminder.title = [NSString stringWithFormat:@"Renew contents insurance, since \"%@\" is expiring.", self.insurentory.name];
 	reminder.calendar = self.eventStore.defaultCalendarForNewReminders;
 	reminder.dueDateComponents = [self dateComponentsForReminderDueDate];
 	
+	// Add alarm
+	NSDate* now = [NSDate date];
+	NSDate* soon = [now dateByAddingTimeInterval:30];
+	EKAlarm* alarm = [EKAlarm alarmWithAbsoluteDate:soon]; //reminder.dueDateComponents.date];
+	[reminder addAlarm:alarm];
+	 
 	NSError *error = nil;
 	if (![self.eventStore saveReminder:reminder commit:YES error:&error]) {
 		
