@@ -19,7 +19,7 @@
 
 @interface AssetsTableViewController ()
 
-@property (nonatomic) BOOL needsShowAssetSeque;
+@property (nonatomic) BOOL needsShowAssetSegue;
 
 @end
 
@@ -103,7 +103,7 @@
 	//	UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
 	//	self.navigationItem.rightBarButtonItem = addButton;
 	
-	self.needsShowAssetSeque = NO;
+	self.needsShowAssetSegue = NO;
 }
 
 
@@ -255,8 +255,8 @@
 	
 	[self.tableView endUpdates];
 
-	if (self.needsShowAssetSeque) {
-		self.needsShowAssetSeque = NO;
+	if (self.needsShowAssetSegue) {
+		self.needsShowAssetSegue = NO;
 
 		// Select first item, since our sort order is inserting at top of list
 		[self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0] animated:YES scrollPosition:UITableViewScrollPositionNone];
@@ -296,7 +296,7 @@
 
 - (IBAction)addPressed:(UIBarButtonItem *)sender {
 	
-	self.needsShowAssetSeque = YES;
+	self.needsShowAssetSegue = YES;
 	[self insertNewObject:sender];
 }
 
