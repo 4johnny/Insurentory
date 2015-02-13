@@ -23,7 +23,7 @@
 
 - (IBAction)saveInventoryButtonPressed:(id)sender;
 
-- (IBAction)emailButtonPressed:(UIButton *)sender;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *emailBarButtonPressed;
 
 @end
 

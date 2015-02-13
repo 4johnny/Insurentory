@@ -29,6 +29,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <toolbar key="tableFooterView" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="UkL-G4-xL6">
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            <items>
+                                <barButtonItem systemItem="save" id="a4u-VD-pd2">
+                                    <connections>
+                                        <action selector="saveInventoryButtonPressed:" destination="XLt-v4-I34" id="EF3-NI-1JS"/>
+                                    </connections>
+                                </barButtonItem>
+                                <barButtonItem width="43" style="plain" systemItem="fixedSpace" id="ZLY-RK-pPp"/>
+                                <barButtonItem title="Email" id="bII-sz-qzR">
+                                    <connections>
+                                        <action selector="emailButtonPressed:" destination="XLt-v4-I34" id="naN-ES-APx"/>
+                                    </connections>
+                                </barButtonItem>
+                            </items>
+                        </toolbar>
                         <sections>
                             <tableViewSection id="Mdq-SO-eZ7">
                                 <cells>
@@ -190,37 +207,6 @@
                                         </tableViewCellContentView>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="62" id="sE4-cY-Y27">
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sE4-cY-Y27" id="pfx-yM-e9r">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wcf-Og-2Jl">
-                                                    <rect key="frame" x="8" y="14" width="46" height="34"/>
-                                                    <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                                    <state key="normal" title="Email">
-                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </state>
-                                                    <connections>
-                                                        <action selector="emailButtonPressed:" destination="XLt-v4-I34" eventType="touchUpInside" id="1WQ-lJ-OdP"/>
-                                                    </connections>
-                                                </button>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="je6-AT-0Yq">
-                                                    <rect key="frame" x="62" y="14" width="57" height="34"/>
-                                                    <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                                    <state key="normal" title="Assets">
-                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </state>
-                                                    <connections>
-                                                        <segue destination="soY-CL-jRs" kind="custom" identifier="Assets" customClass="EHDotLinkedStoryboardSegue" id="Uga-91-kZx"/>
-                                                    </connections>
-                                                </button>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -229,14 +215,17 @@
                             <outlet property="delegate" destination="XLt-v4-I34" id="vRq-i2-9ft"/>
                         </connections>
                     </tableView>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" title="Insurentory" id="Qb0-bA-Bw2">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="GMl-G2-ogg">
+                        <barButtonItem key="rightBarButtonItem" title="Assets" id="2eA-yL-9jc">
                             <connections>
-                                <action selector="saveInventoryButtonPressed:" destination="XLt-v4-I34" id="pOa-bC-YM5"/>
+                                <segue destination="soY-CL-jRs" kind="custom" identifier="Assets" customClass="EHDotLinkedStoryboardSegue" id="rBT-Ch-jTh"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="emailBarButtonPressed" destination="bII-sz-qzR" id="POR-OX-WJ2"/>
                         <outlet property="locationTextView" destination="qRR-Ek-udp" id="reD-ho-sSY"/>
                         <outlet property="nameTextField" destination="24L-iO-X6S" id="S39-iR-sL3"/>
                         <outlet property="notesTextView" destination="IJ8-fo-27R" id="9DA-c8-Rrj"/>

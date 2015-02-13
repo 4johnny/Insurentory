@@ -135,8 +135,7 @@
 	[self.navigationController popViewControllerAnimated:YES];
 }
 
-
-- (IBAction)emailButtonPressed:(UIButton *)sender {
+- (IBAction)emailButtonPressed:(UIBarButtonItem *)sender {
     
     if ( [MFMailComposeViewController canSendMail] )
     {
