@@ -356,6 +356,7 @@
 	// Set up reusable alert controller
 	UIAlertAction* okAlertAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
 	UIAlertController* alertController = [UIAlertController alertControllerWithTitle:@"Error" message:nil preferredStyle:UIAlertControllerStyleAlert];
+	[alertController addAction:okAlertAction];
 	
 	// If cannot auth with Touch ID, we are done.
 	LAContext *authContext = [[LAContext alloc] init];
@@ -363,7 +364,6 @@
 	if (![authContext canEvaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics error:&error]) {
 		
 		alertController.message = @"Your device cannot authenticate using TouchID.";
-		[alertController addAction:okAlertAction];
 		[self presentViewController:alertController animated:YES completion:nil];
 		
 		[self enableAppView]; // NOTE: For simulator and pre-iPhone5s demo purposes, we just approve
@@ -376,7 +376,6 @@
 		if (error) {
 			
 			alertController.message = @"There was a problem verifying your identity.";
-			[alertController addAction:okAlertAction];
 			[self presentViewController:alertController animated:YES completion:nil];
 			return;
 		}
@@ -385,7 +384,6 @@
 		if (!success) {
 
 			alertController.message = @"You are not the device owner.";
-			[alertController addAction:okAlertAction];
 			[self presentViewController:alertController animated:YES completion:nil];
 			return;
 		}
