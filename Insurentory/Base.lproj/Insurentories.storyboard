@@ -36,13 +36,37 @@
                             <items>
                                 <barButtonItem systemItem="save" id="a4u-VD-pd2">
                                     <connections>
-                                        <action selector="saveInventoryButtonPressed:" destination="XLt-v4-I34" id="EF3-NI-1JS"/>
+                                        <action selector="saveButtonPressed:" destination="XLt-v4-I34" id="Iia-Pm-lrH"/>
                                     </connections>
                                 </barButtonItem>
-                                <barButtonItem width="43" style="plain" systemItem="fixedSpace" id="ZLY-RK-pPp"/>
-                                <barButtonItem title="Email" id="bII-sz-qzR">
+                                <barButtonItem width="32" style="plain" systemItem="fixedSpace" id="ZLY-RK-pPp">
+                                    <connections>
+                                        <action selector="emailButtonPressed:" destination="XLt-v4-I34" id="YkQ-9O-Q1b"/>
+                                    </connections>
+                                </barButtonItem>
+                                <barButtonItem systemItem="compose" id="bII-sz-qzR">
                                     <connections>
                                         <action selector="emailButtonPressed:" destination="XLt-v4-I34" id="naN-ES-APx"/>
+                                    </connections>
+                                </barButtonItem>
+                                <barButtonItem width="32" style="plain" systemItem="fixedSpace" id="kP3-kd-Ckm">
+                                    <connections>
+                                        <action selector="emailButtonPressed:" destination="XLt-v4-I34" id="gAS-Lc-zUh"/>
+                                    </connections>
+                                </barButtonItem>
+                                <barButtonItem systemItem="bookmarks" id="Rhu-Mx-Jl1">
+                                    <connections>
+                                        <action selector="reminderButtonPressed:" destination="XLt-v4-I34" id="Gb1-GC-ool"/>
+                                    </connections>
+                                </barButtonItem>
+                                <barButtonItem width="32" style="plain" systemItem="fixedSpace" id="xZX-TQ-U5Q">
+                                    <connections>
+                                        <action selector="emailButtonPressed:" destination="XLt-v4-I34" id="QdL-C2-iU4"/>
+                                    </connections>
+                                </barButtonItem>
+                                <barButtonItem systemItem="action" id="Nmb-UM-BfK">
+                                    <connections>
+                                        <action selector="airdropButtonPressed:" destination="XLt-v4-I34" id="jw5-zG-5hT"/>
                                     </connections>
                                 </barButtonItem>
                             </items>
@@ -227,10 +251,13 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
                     <connections>
-                        <outlet property="emailBarButtonPressed" destination="bII-sz-qzR" id="POR-OX-WJ2"/>
+                        <outlet property="airdropBarButtonItem" destination="Nmb-UM-BfK" id="uzF-GA-IFf"/>
+                        <outlet property="emailBarButtonItem" destination="bII-sz-qzR" id="fTG-h9-rv2"/>
                         <outlet property="locationTextView" destination="qRR-Ek-udp" id="reD-ho-sSY"/>
                         <outlet property="nameTextField" destination="24L-iO-X6S" id="S39-iR-sL3"/>
                         <outlet property="notesTextView" destination="IJ8-fo-27R" id="9DA-c8-Rrj"/>
+                        <outlet property="reminderBarButtonItem" destination="Rhu-Mx-Jl1" id="3Id-Nw-3aE"/>
+                        <outlet property="saveBarButtonItem" destination="a4u-VD-pd2" id="75S-Sn-g0H"/>
                         <outlet property="timestampLabel" destination="8nk-Tj-9JI" id="BR0-WA-R1N"/>
                         <outlet property="totalValueLabel" destination="a7q-XL-IBD" id="gcT-lV-Uxf"/>
                     </connections>

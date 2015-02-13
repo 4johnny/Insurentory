@@ -21,9 +21,11 @@
 @property (weak, nonatomic) IBOutlet UILabel *totalValueLabel;
 @property (weak, nonatomic) IBOutlet UITextView *locationTextView;
 
-- (IBAction)saveInventoryButtonPressed:(id)sender;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *saveBarButtonItem;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *emailBarButtonItem;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *reminderBarButtonItem;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *airdropBarButtonItem;
 
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *emailBarButtonPressed;
 
 @end
 

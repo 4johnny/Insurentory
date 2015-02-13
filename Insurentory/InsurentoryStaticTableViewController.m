@@ -122,7 +122,7 @@
 }
 
 
-- (IBAction)saveInventoryButtonPressed:(id)sender {
+- (IBAction)saveButtonPressed:(id)sender {
 	
 	[self.view endEditing:YES];
 	
@@ -136,7 +136,7 @@
 
 
 - (IBAction)emailButtonPressed:(UIBarButtonItem *)sender {
-    
+	
     if ( [MFMailComposeViewController canSendMail] )
     {
         MFMailComposeViewController *mailComposer = [[MFMailComposeViewController alloc] init];
@@ -151,6 +151,18 @@
         [self presentViewController:mailComposer animated:YES completion:nil];
     }
     
+}
+
+
+- (IBAction)reminderButtonPressed:(UIBarButtonItem *)sender {
+	
+	
+}
+
+
+- (IBAction)airdropButtonPressed:(UIBarButtonItem *)sender {
+	
+	
 }
 
 
