@@ -18,6 +18,7 @@
 
 @property (nonatomic) CLLocation *insurentoryLocation;
 @property (nonatomic) NSString *insurentoryAddress;
+@property (nonatomic) BOOL needsShowInsurentorySegue;
 
 @end
 
@@ -68,6 +69,8 @@
     AppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     appDelegate.locationManager.delegate = self;
     
+    
+    self.needsShowInsurentorySegue = NO;
 }
 
 
@@ -77,7 +80,12 @@
 }
 
 
+
 - (void)insertNewObject:(id)sender {
+    
+    self.needsShowInsurentorySegue = YES;
+    
+    
 	NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
 	NSEntityDescription *entity = [[self.fetchedResultsController fetchRequest] entity];
     Insurentory *newInsurentory = [NSEntityDescription insertNewObjectForEntityForName:[entity name] inManagedObjectContext:context];
@@ -315,6 +323,16 @@
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
     
     [self.tableView endUpdates];
+    
+    if (self.needsShowInsurentorySegue) {
+        self.needsShowInsurentorySegue = NO;
+        
+        // Select first item, since our sort order is inserting at top of list
+        [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0] animated:YES scrollPosition:UITableViewScrollPositionNone];
+        [self performSegueWithIdentifier:@"showInsurentory" sender:self];
+    }
+
+    self.fetchedResultsController = nil;
 }
 
 /*
