@@ -38,6 +38,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 	
+	// Taps should cancel keyboards, but not cell selection
+	UITapGestureRecognizer *backgroundTapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleBackgroundTap:)];
+	backgroundTapRecognizer.cancelsTouchesInView = NO;
+	[self.view addGestureRecognizer:backgroundTapRecognizer];
+	
 	[self configureView];
 }
 
@@ -142,6 +147,12 @@
 #
 # pragma mark Action Handlers
 #
+
+
+- (void)handleBackgroundTap:(UITapGestureRecognizer *)sender {
+	
+	[self.view endEditing:YES];
+}
 
 
 - (IBAction)saveAssetPressed:(UIBarButtonItem *)sender {

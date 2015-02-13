@@ -15,14 +15,13 @@
 #import <MessageUI/MessageUI.h>
 #import "ChameleonFramework/Chameleon.h"
 
+
 @interface InsurentoryStaticTableViewController () <MFMailComposeViewControllerDelegate>
 
 @end
 
+
 @implementation InsurentoryStaticTableViewController
-
-
-
 
 
 - (void)viewDidLoad {
@@ -31,21 +30,22 @@
     UITapGestureRecognizer *backgroundTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handlebackgroundTap:)];
     [self.view addGestureRecognizer:backgroundTap];
     
-    self.tableView.separatorColor = FlatSkyBlue;
-
 }
 
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+	
     [self configureView];
-    
 }
+
+
 - (void)handlebackgroundTap:(UITapGestureRecognizer *)sender {
 	
     [self.view endEditing:YES];
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -67,20 +67,20 @@
 
 }
 
-- (void)valueUpdated:(double)valueDelta{
-    
+
+- (void)valueUpdated:(double)valueDelta {
     
     self.insurentory.totalValue = [self.insurentory.totalValue decimalNumberByAdding:[NSDecimalNumber decimalNumberWithDecimal:[NSNumber numberWithDouble:valueDelta].decimalValue]];
     self.insurentory.timeStamp = [NSDate date];
     [InsurentoryStaticTableViewController saveObjectContext];
-    
 }
-
 
 
 #pragma mark - Managing the detail item
 
+
 - (void)setInsurentory:(id)newInsurentory {
+	
 	if (_insurentory != newInsurentory) {
 	    _insurentory = newInsurentory;
 	        
@@ -92,10 +92,9 @@
 
 - (void)configureView {
     
-	// Update the user interface for the detail item.
-    if (!self.insurentory) return;
-    
-    // We have an insurentory, so load it into view
+	// Update the user interface for the insurentory item.
+	
+	self.tableView.separatorColor = FlatSkyBlue;
 	
     self.nameTextField.text = self.insurentory.name;
 	
@@ -134,6 +133,7 @@
     [InsurentoryStaticTableViewController saveObjectContext];
 	[self.navigationController popViewControllerAnimated:YES];
 }
+
 
 - (IBAction)emailButtonPressed:(UIBarButtonItem *)sender {
     
@@ -194,7 +194,6 @@
                         error:(NSError *)error {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
-
 
 
 @end
