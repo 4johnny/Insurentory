@@ -1,6 +1,5 @@
 //
 //  EHDotLinkedStoryboardSegue.h
-//  Giusto
 //
 //  Created by Eli Hini on 2014-10-21.
 //  Copyright (c) 2014 Venovis Inc. All rights reserved.

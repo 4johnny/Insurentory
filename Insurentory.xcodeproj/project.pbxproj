@@ -134,21 +134,10 @@
 		B22685AD1A88463400AAC8A6 /* Insurentory */ = {
 			isa = PBXGroup;
 			children = (
-				B22685B21A88463400AAC8A6 /* AppDelegate.h */,
-				B22685B31A88463400AAC8A6 /* AppDelegate.m */,
-				B22685B81A88463400AAC8A6 /* InsurentoriesTableViewController.h */,
-				B22685B91A88463400AAC8A6 /* InsurentoriesTableViewController.m */,
-				B22685BB1A88463400AAC8A6 /* InsurentoryStaticTableViewController.h */,
-				B22685BC1A88463400AAC8A6 /* InsurentoryStaticTableViewController.m */,
-				E0F7B1251A8A9BA600CBD7BD /* AssetsTableViewController.h */,
-				E0F7B1261A8A9BA600CBD7BD /* AssetsTableViewController.m */,
-				B258508F1A8B5C7200FDB71A /* AssetTableViewCell.h */,
-				B25850901A8B5C7200FDB71A /* AssetTableViewCell.m */,
-				E0F7B1281A8A9BD600CBD7BD /* AssetStaticTableViewController.h */,
-				E0F7B1291A8A9BD600CBD7BD /* AssetStaticTableViewController.m */,
-				B22685BE1A88463400AAC8A6 /* Insurentories.storyboard */,
-				E0F7B1231A8A974E00CBD7BD /* Assets.storyboard */,
-				B25850851A8B519400FDB71A /* Data Model (Auto-Generated) */,
+				B2C756111AA18BC600B148D3 /* Controllers */,
+				B2C756101AA18BAB00B148D3 /* Views */,
+				B2C7560F1AA18B5E00B148D3 /* Storyboards */,
+				B25850851A8B519400FDB71A /* Data Model */,
 				B22685AE1A88463400AAC8A6 /* Supporting Files */,
 			);
 			path = Insurentory;
@@ -157,6 +146,8 @@
 		B22685AE1A88463400AAC8A6 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				B22685B21A88463400AAC8A6 /* AppDelegate.h */,
+				B22685B31A88463400AAC8A6 /* AppDelegate.m */,
 				E0F7B1201A8A96A600CBD7BD /* EHDotLinkedStoryboardSegue.h */,
 				E0F7B1211A8A96A600CBD7BD /* EHDotLinkedStoryboardSegue.m */,
 				B22685C31A88463400AAC8A6 /* LaunchScreen.xib */,
@@ -184,16 +175,57 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		B25850851A8B519400FDB71A /* Data Model (Auto-Generated) */ = {
+		B25850851A8B519400FDB71A /* Data Model */ = {
+			isa = PBXGroup;
+			children = (
+				B2C756121AA18BE300B148D3 /* Generated */,
+				B22685B51A88463400AAC8A6 /* Insurentory.xcdatamodeld */,
+			);
+			name = "Data Model";
+			sourceTree = "<group>";
+		};
+		B2C7560F1AA18B5E00B148D3 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				B22685BE1A88463400AAC8A6 /* Insurentories.storyboard */,
+				E0F7B1231A8A974E00CBD7BD /* Assets.storyboard */,
+			);
+			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		B2C756101AA18BAB00B148D3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B258508F1A8B5C7200FDB71A /* AssetTableViewCell.h */,
+				B25850901A8B5C7200FDB71A /* AssetTableViewCell.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		B2C756111AA18BC600B148D3 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B22685B81A88463400AAC8A6 /* InsurentoriesTableViewController.h */,
+				B22685B91A88463400AAC8A6 /* InsurentoriesTableViewController.m */,
+				B22685BB1A88463400AAC8A6 /* InsurentoryStaticTableViewController.h */,
+				B22685BC1A88463400AAC8A6 /* InsurentoryStaticTableViewController.m */,
+				E0F7B1251A8A9BA600CBD7BD /* AssetsTableViewController.h */,
+				E0F7B1261A8A9BA600CBD7BD /* AssetsTableViewController.m */,
+				E0F7B1281A8A9BD600CBD7BD /* AssetStaticTableViewController.h */,
+				E0F7B1291A8A9BD600CBD7BD /* AssetStaticTableViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		B2C756121AA18BE300B148D3 /* Generated */ = {
 			isa = PBXGroup;
 			children = (
 				B258508C1A8B541300FDB71A /* Asset.h */,
 				B258508D1A8B541300FDB71A /* Asset.m */,
 				B25850891A8B541300FDB71A /* Insurentory.h */,
 				B258508A1A8B541300FDB71A /* Insurentory.m */,
-				B22685B51A88463400AAC8A6 /* Insurentory.xcdatamodeld */,
 			);
-			name = "Data Model (Auto-Generated)";
+			name = Generated;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
