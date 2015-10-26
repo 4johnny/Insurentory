@@ -33,7 +33,7 @@
 
 	[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 	
-	// Diable app until user authenticated
+	// Disable app until user authenticated
 	UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
 	navigationController.view.userInteractionEnabled = NO;
 	

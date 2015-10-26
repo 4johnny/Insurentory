@@ -1,5 +1,7 @@
 PODS:
-  - ChameleonFramework (1.1.2)
+  - ChameleonFramework (2.0.4):
+    - ChameleonFramework/Default (= 2.0.4)
+  - ChameleonFramework/Default (2.0.4)
   - CHCSVParser (2.1.0)
   - SWTableViewCell (0.3.7)
 
@@ -9,8 +11,8 @@ DEPENDENCIES:
   - SWTableViewCell (~> 0.3.7)
 
 SPEC CHECKSUMS:
-  ChameleonFramework: 5d34a29b6db60594a9998f6dfdffa8ac5f05979a
-  CHCSVParser: 1ebc9783114707e2b6f83b20fe0f246eb2fabae0
-  SWTableViewCell: 25de71898e3fcd11cf75707ef90245acf990ec03
+  ChameleonFramework: 5abe69b1f2a6cc79c3c435fcd9d3d855748225ee
+  CHCSVParser: 3bcc7bdb72111a31222e95d57eacceefe4e537e8
+  SWTableViewCell: 2a94aadc9d47b2b611fa064566bf57948b95b579
 
-COCOAPODS: 0.35.0
+COCOAPODS: 0.39.0
